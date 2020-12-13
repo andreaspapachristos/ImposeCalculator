@@ -46,15 +46,14 @@ def matchPage(width, height):
                # i[1] = height/i[0]
 
         print(temp)
-def find4up(diaireteos, dieretis):
-    an = (2,3,4,6,8,9,12)
-    z = -1
+def find4up(diaireteos, dieretis):  
+    an = (12,9,8,6,4,3,2)
+    
     for i in an:
         if (diaireteos//dieretis) >= i:
-         z += 1   
-        else: break
-    return an[z]
-       # else: break
+         return i  
+    return None
+   
     
 
 
@@ -114,5 +113,5 @@ def matchMontaz(**kwargs):
 
 
 if __name__ == '__main__':
-    #print(find4up(880, 150))
-    matchMontaz(pagewidth=280, pageHeight=150, paperWidth=880, paperHeight=640, monofyllo=False)
+    print(find4up(880, 80))
+    #matchMontaz(pagewidth=280, pageHeight=80, paperWidth=880, paperHeight=640, monofyllo=False)
