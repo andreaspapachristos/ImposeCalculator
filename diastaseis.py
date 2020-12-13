@@ -52,7 +52,7 @@ def find4up(diaireteos, dieretis):
     for i in an:
         if (diaireteos//dieretis) >= i:
          return i  
-    return None
+    return 0
    
     
 
@@ -68,6 +68,7 @@ def matchMontaz(**kwargs):
         temp.append([ppw//pw, pph//ph])
         temp.append([ppw//ph, pph//pw])
         print(temp)
+        return(temp)
         if ppw/pw > 0 and pph/ph > 0 :
             if ppw/pw > pph/ph:
                 t = ph
@@ -111,21 +112,24 @@ def matchMontaz(**kwargs):
         print(temp)
         return(temp)
    
-def betterUse(papers, page):
+def betterUse(papers, page, monofyllo):
     #mmm = []
     
         #mmm.append(p)
     embadonp = page[0]*page[1]
    
     for p in papers:
-        m = matchMontaz(pagewidth=page[0], pageHeight=page[1], paperWidth=p[0], paperHeight=p[1], monofyllo=False)
+        m = matchMontaz(pagewidth=page[0], pageHeight=page[1], paperWidth=p[0], paperHeight=p[1], monofyllo=True)
         embadon = (p[0] * p[1])
         print(p)
         for p in m:
-            y= (p[0] * p[1]) * embadonp *2
-            print(y/embadon)
+            if (monofyllo):            
+             y= (p[0] * p[1]) * embadonp 
+            else:
+                y= (p[0] * p[1]) * embadonp *2 
+            print(format(y/embadon, '.2f'))
 
 if __name__ == '__main__':
     #print(find4up(880, 80))
     #matchMontaz(pagewidth=210, pageHeight=280, paperWidth=860, paperHeight=610, monofyllo=False)
-    betterUse([[61,86],[64,88],[70,100]], [21,28])
+    betterUse([[61,86],[64,88],[70,100]], [34,49], True)
