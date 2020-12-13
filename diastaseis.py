@@ -109,9 +109,23 @@ def matchMontaz(**kwargs):
 
             
         print(temp)
+        return(temp)
    
-
+def betterUse(papers, page):
+    #mmm = []
+    
+        #mmm.append(p)
+    embadonp = page[0]*page[1]
+   
+    for p in papers:
+        m = matchMontaz(pagewidth=page[0], pageHeight=page[1], paperWidth=p[0], paperHeight=p[1], monofyllo=False)
+        embadon = (p[0] * p[1])
+        print(p)
+        for p in m:
+            y= (p[0] * p[1]) * embadonp *2
+            print(y/embadon)
 
 if __name__ == '__main__':
-    print(find4up(880, 80))
-    #matchMontaz(pagewidth=280, pageHeight=80, paperWidth=880, paperHeight=640, monofyllo=False)
+    #print(find4up(880, 80))
+    #matchMontaz(pagewidth=210, pageHeight=280, paperWidth=860, paperHeight=610, monofyllo=False)
+    betterUse([[61,86],[64,88],[70,100]], [21,28])
