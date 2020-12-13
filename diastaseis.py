@@ -46,6 +46,17 @@ def matchPage(width, height):
                # i[1] = height/i[0]
 
         print(temp)
+def find4up(diaireteos, dieretis):
+    an = (2,3,4,6,8,9,12)
+    z = -1
+    for i in an:
+        if (diaireteos//dieretis) >= i:
+         z += 1   
+        else: break
+    return an[z]
+       # else: break
+    
+
 
     
 def matchMontaz(**kwargs):
@@ -55,9 +66,9 @@ def matchMontaz(**kwargs):
     if kwargs.get('monofyllo', True):
         pw = kwargs.get('pagewidth')
         ppw = kwargs.get('paperWidth')
-     #   temp.append([ppw//pw, pph//ph])
-      #  temp.append([ppw//ph, pph//pw])
-      #  print(temp)
+        temp.append([ppw//pw, pph//ph])
+        temp.append([ppw//ph, pph//pw])
+        print(temp)
         if ppw/pw > 0 and pph/ph > 0 :
             if ppw/pw > pph/ph:
                 t = ph
@@ -92,10 +103,10 @@ def matchMontaz(**kwargs):
     else:            
         pw = kwargs.get('pagewidth') *2 
         ppw = kwargs.get('paperWidth') #/2    
-       # an = (2,3,4,6,8,9,12)
+        
        
-        temp.append([ppw//pw, pph//ph])
-        temp.append([ppw//ph, pph//pw])
+        temp.append([ppw//pw, find4up(pph, ph)]) #pph//ph]
+        temp.append([find4up(ppw, ph), pph//pw]) #ppw//ph
 
             
         print(temp)
@@ -103,4 +114,5 @@ def matchMontaz(**kwargs):
 
 
 if __name__ == '__main__':
-    matchMontaz(pagewidth=100, pageHeight=105, paperWidth=880, paperHeight=640, monofyllo=True)
+    #print(find4up(880, 150))
+    matchMontaz(pagewidth=280, pageHeight=150, paperWidth=880, paperHeight=640, monofyllo=False)
