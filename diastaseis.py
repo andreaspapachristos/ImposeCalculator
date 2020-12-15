@@ -54,22 +54,8 @@ def find4up(diaireteos, dieretis):
          return i  
     return 0
    
-    
-
-
-    
-def matchMontaz(**kwargs):
-    ph = kwargs.get('pageHeight')   
-    pph = kwargs.get('paperHeight')
-    temp = []
-    if kwargs.get('monofyllo', True):
-        pw = kwargs.get('pagewidth')
-        ppw = kwargs.get('paperWidth')
-        temp.append([ppw//pw, pph//ph])
-        temp.append([ppw//ph, pph//pw])
-        print(temp)
-        return(temp)
-        if ppw/pw > 0 and pph/ph > 0 :
+""" def dokimi():
+    if ppw/pw > 0 and pph/ph > 0 :
             if ppw/pw > pph/ph:
                 t = ph
                 ph = pw
@@ -91,7 +77,7 @@ def matchMontaz(**kwargs):
                 elif(v > pph): break                    
             print(z)
 
-        elif ppw/pw > 0 and pph/ph < 0 :
+        elif ppw/pw > 0 and pph/ph < 0:
             if ppw/ph > 0 :
                 v = ph
                 z = 0
@@ -99,25 +85,31 @@ def matchMontaz(**kwargs):
                 if(v < ppw):
                     v += ph
                     z += 1 
-                   
-    else:            
-        pw = kwargs.get('pagewidth') *2 
-        ppw = kwargs.get('paperWidth') #/2    
-        
-       
-        temp.append([ppw//pw, find4up(pph, ph)]) #pph//ph]
-        temp.append([find4up(ppw, ph), pph//pw]) #ppw//ph
+ """
 
-            
+    
+def matchMontaz(**kwargs):
+    ph = kwargs.get('pageHeight') +6  
+    pph = kwargs.get('paperHeight')
+    temp = []
+    if kwargs.get('monofyllo', True):
+        pw = kwargs.get('pagewidth') +6
+        ppw = kwargs.get('paperWidth')
+        temp.append([ppw//pw, pph//ph])
+        temp.append([ppw//ph, pph//pw])
         print(temp)
+        return(temp)                           
+    else:            
+        pw = (kwargs.get('pagewidth') *2) +6 
+        ppw = kwargs.get('paperWidth') #/2                   
+        temp.append([ppw//pw, find4up(pph, ph)]) #pph//ph]
+        temp.append([find4up(ppw, ph), pph//pw]) #ppw//ph            
+        #print(temp)
         return(temp)
    
 def betterUse(papers, page, monofyllo):
-    #mmm = []
-    
-        #mmm.append(p)
-    embadonp = page[0]*page[1]
-   
+
+    embadonp = page[0]*page[1]   
     for p in papers:
         m = matchMontaz(pagewidth=page[0], pageHeight=page[1], paperWidth=p[0], paperHeight=p[1], monofyllo=True)
         embadon = (p[0] * p[1])
@@ -132,4 +124,4 @@ def betterUse(papers, page, monofyllo):
 if __name__ == '__main__':
     #print(find4up(880, 80))
     #matchMontaz(pagewidth=210, pageHeight=280, paperWidth=860, paperHeight=610, monofyllo=False)
-    betterUse([[61,86],[64,88],[70,100]], [34,49], True)
+    betterUse([[610,860],[640,880],[700,1000]], [320,490], True)
