@@ -120,6 +120,13 @@ def betterUse(papers, page, monofyllo):
             else:
                 y= (p[0] * p[1]) * embadonp *2 
             print(format(y/embadon, '.2f'))
+ 
+def getScheme(pages):
+    dekaksi = pages//4
+    n = dekaksi%4
+    if (n):
+        okto = n//2
+        tessera = n%2
 
 if __name__ == '__main__':
     #print(find4up(880, 80))
