@@ -123,6 +123,7 @@ def betterUse(papers, page, monofyllo):
             print(format(y/embadon, '.2f'))
  
 def getScheme(pages):
+
     dekaksi = pages//4
     n = dekaksi%4
     if (n):
