@@ -16,7 +16,7 @@ from PyQt5.QtGui import QColor
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(600, 400)
+        MainWindow.resize(600, 420)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -28,7 +28,7 @@ class Ui_MainWindow(object):
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
-        canvas = QtGui.QPixmap(600, 400)
+        canvas = QtGui.QPixmap(MainWindow.frameGeometry().width(), MainWindow.frameGeometry().height())
         canvas.fill(Qt.white)
         self.label.setPixmap(canvas)
         self.drawrect()
@@ -42,7 +42,10 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", ""))
 
     def drawrect(self):
-
+        x = MainWindow.geometry().width()*0.6
+        y = MainWindow.geometry().height()*0.6
+        page = [210, 290]
+        paper = [4, 2]
         painter = QtGui.QPainter(self.label.pixmap())
         pen = QtGui.QPen()
         pen.setWidth(1)
