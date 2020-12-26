@@ -56,10 +56,11 @@ class Ui_MainWindow(object):
         painter.setPen(pen)
         for p in range(0,paper[0]):
             vgap = ((MainWindow.geometry().height() - page[1] * 0.6 * paper[1]) // 3)
+            #hgap += hgap
             for m in range(0,paper[1]):
                 painter.drawRect(int(hgap), int(vgap), int(page[0]*0.6), int(page[1]*0.6))
-                #vgap += vgap
-                vgap = ((MainWindow.geometry().height() - page[1] * 0.6 * paper[1]) // 3) + page[1] * 0.6
+                vgap += vgap + page[1]*0.6
+                #vgap = ((MainWindow.geometry().height() - page[1] * 0.6 * paper[1]) // 3) + page[1] * 0.6
             hgap += page[0]*0.6
 
             #painter.drawRect(10, 70, 100, 60)

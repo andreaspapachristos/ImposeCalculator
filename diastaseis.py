@@ -91,18 +91,30 @@ def find4up(diaireteos, dieretis):
 
 def matchMontaz(**kwargs):
     ph = kwargs.get('pageHeight') + 6
-    pph = kwargs.get('paperHeight')
+    if (kwargs.get('paperHeight') < kwargs.get('paperWidth') ):
+        pph = kwargs.get('paperHeight') - 10
+    else:
+        pph = kwargs.get('paperWidth') - 10
+
     temp = []
     if kwargs.get('monofyllo', True):
         pw = kwargs.get('pagewidth') + 6
-        ppw = kwargs.get('paperWidth')
+        if (kwargs.get('paperHeight') < kwargs.get('paperWidth')):
+            ppw = kwargs.get('paperWidth')
+        else:
+            ppw = kwargs.get('paperHeight')
+        #ppw = kwargs.get('paperWidth')
         temp.append([ppw // pw, pph // ph])
         temp.append([ppw // ph, pph // pw])
         print(temp)
         return (temp)
     else:
         pw = (kwargs.get('pagewidth') * 2) + 6
-        ppw = kwargs.get('paperWidth')  # /2
+        #ppw = kwargs.get('paperWidth')  # /2
+        if (kwargs.get('paperHeight') < kwargs.get('paperWidth')):
+            ppw = kwargs.get('paperWidth')
+        else:
+            ppw = kwargs.get('paperHeight')
         temp.append([ppw // pw, find4up(pph, ph)])  # pph//ph]
         temp.append([find4up(ppw, ph), pph // pw])  # ppw//ph
         print(temp)
@@ -135,5 +147,5 @@ def getScheme(pages):
 if __name__ == '__main__':
     # print(find4up(880, 80))
     # matchMontaz(pagewidth=210, pageHeight=280, paperWidth=860, paperHeight=610, monofyllo=False)
-    # betterUse([[610,860],[640,880],[700,1000]], [320,490], False)
-    getScheme(132)
+     betterUse([[610,860],[880,640],[1000,700]], [210,280], False)
+    #getScheme(132)
