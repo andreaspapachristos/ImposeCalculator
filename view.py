@@ -16,7 +16,7 @@ from PyQt5.QtGui import QColor
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(600, 400)
+        MainWindow.resize(600, 420)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -28,7 +28,7 @@ class Ui_MainWindow(object):
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
-        canvas = QtGui.QPixmap(600, 400)
+        canvas = QtGui.QPixmap(MainWindow.frameGeometry().width(), MainWindow.frameGeometry().height())
         canvas.fill(Qt.white)
         self.label.setPixmap(canvas)
         self.drawrect()
@@ -42,15 +42,27 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", ""))
 
     def drawrect(self):
-
+        x = int (MainWindow.geometry().width()*0.6)
+        y = int (MainWindow.geometry().height()*0.6)
+        page = [210, 290]
+        paper = [4, 2]
+        #z =
+        hgap = (MainWindow.geometry().width() - page[0]*0.6*paper[0])//paper[0]
+        vgap = (MainWindow.geometry().height() - page[1]*0.6*paper[1])//3
         painter = QtGui.QPainter(self.label.pixmap())
         pen = QtGui.QPen()
         pen.setWidth(1)
         pen.setColor(QtGui.QColor("#EB5160"))
         painter.setPen(pen)
+        for p in range(0,paper[0]):
+            vgap = ((MainWindow.geometry().height() - page[1] * 0.6 * paper[1]) // 3)
+            for m in range(0,paper[1]):
+                painter.drawRect(int(hgap), int(vgap), int(page[0]*0.6), int(page[1]*0.6))
+                #vgap += vgap
+                vgap = ((MainWindow.geometry().height() - page[1] * 0.6 * paper[1]) // 3) + page[1] * 0.6
+            hgap += page[0]*0.6
 
-        painter.drawRect(10, 10, 100, 60)
-        painter.drawRect(10, 70, 100, 60)
+            #painter.drawRect(10, 70, 100, 60)
 
 if __name__ == "__main__":
     import sys
