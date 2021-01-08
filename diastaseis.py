@@ -132,15 +132,18 @@ def betterUse(papers, page, monofyllo):
         for p in m:
             if (monofyllo):
                 y = (p[0] * p[1]) * embadonp
+                pages = p[0] * p[1]
             else:
                 y = (p[0] * p[1]) * embadonp * 2
-            print(format(y / embadon, '.2f'))
-            if (float(format(y/embadon,'.2f')) > float(temp)):
+            #print(format(y / embadon, '.2f'))
+            if (float(format(y/embadon,'.3f')) > float(temp)):
                 temp = format(y/embadon,'.2f')
                 xarti = f'{n[0], n[1]}'
+                pages = p[0] * p[1] * 2
     result.append(temp)
     result.append(xarti)
-    print(result[0], result[1])
+    result.append(pages)
+    print(result[0], result[1], result[2])
     return result
 
 
@@ -156,5 +159,5 @@ def getScheme(pages):
 if __name__ == '__main__':
     # print(find4up(880, 80))
     # matchMontaz(pagewidth=210, pageHeight=280, paperWidth=860, paperHeight=610, monofyllo=False)
-     betterUse([[610,860],[880,640],[1000,700]], [280,205], False)
+     betterUse([[610,860],[880,640],[1000,700]], [340, 480], False)
     #getScheme(132)
