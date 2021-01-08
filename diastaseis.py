@@ -106,7 +106,7 @@ def matchMontaz(**kwargs):
         #ppw = kwargs.get('paperWidth')
         temp.append([ppw // pw, pph // ph])
         temp.append([ppw // ph, pph // pw])
-        print(temp)
+        #print(temp)
         return (temp)
     else:
         pw = (kwargs.get('pagewidth') * 2) + 6
@@ -117,22 +117,31 @@ def matchMontaz(**kwargs):
             ppw = kwargs.get('paperHeight')
         temp.append([ppw // pw, find4up(pph, ph)])  # pph//ph]
         temp.append([find4up(ppw, ph), pph // pw])  # ppw//ph
-        print(temp)
+        #print(temp)
         return (temp)
 
 
 def betterUse(papers, page, monofyllo):
     embadonp = page[0] * page[1]
-    for p in papers:
-        m = matchMontaz(pagewidth=page[0], pageHeight=page[1], paperWidth=p[0], paperHeight=p[1], monofyllo=False)
-        embadon = (p[0] * p[1])
-        print(p)
+    temp = 0
+    result = []
+    for n in papers:
+        m = matchMontaz(pagewidth=page[0], pageHeight=page[1], paperWidth=n[0], paperHeight=n[1], monofyllo=monofyllo)
+        embadon = (n[0] * n[1])
+        #print(p)
         for p in m:
             if (monofyllo):
                 y = (p[0] * p[1]) * embadonp
             else:
                 y = (p[0] * p[1]) * embadonp * 2
             print(format(y / embadon, '.2f'))
+            if (float(format(y/embadon,'.2f')) > float(temp)):
+                temp = format(y/embadon,'.2f')
+                xarti = f'{n[0], n[1]}'
+    result.append(temp)
+    result.append(xarti)
+    print(result[0], result[1])
+    return result
 
 
 def getScheme(pages):
@@ -147,5 +156,5 @@ def getScheme(pages):
 if __name__ == '__main__':
     # print(find4up(880, 80))
     # matchMontaz(pagewidth=210, pageHeight=280, paperWidth=860, paperHeight=610, monofyllo=False)
-     betterUse([[610,860],[880,640],[1000,700]], [210,280], False)
+     betterUse([[610,860],[880,640],[1000,700]], [280,205], False)
     #getScheme(132)
