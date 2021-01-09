@@ -136,9 +136,9 @@ def betterUse(papers, page, monofyllo):
             else:
                 y = (p[0] * p[1]) * embadonp * 2
             #print(format(y / embadon, '.2f'))
-            if (float(format(y/embadon,'.3f')) > float(temp)):
+            if (float(format(y/embadon,'.4f')) > float(temp)):
                 temp = format(y/embadon,'.2f')
-                xarti = f'{n[0], n[1]}'
+                xarti = n[0], n[1]
                 pages = p[0] * p[1] * 2
     result.append(temp)
     result.append(xarti)

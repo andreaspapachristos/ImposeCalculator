@@ -195,16 +195,17 @@ class Ui_MainWindow(object):
         self.checkBox_3.clicked.connect(self.checkBox_4.toggle)
         self.checkBox_4.clicked.connect(self.checkBox_3.toggle)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        self.calc()
+        self.pushButton.clicked.connect(self.calc)
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.groupBox_3.setTitle(_translate("MainWindow", "Page"))
         self.groupBox.setTitle(_translate("MainWindow", "Dimensions"))
         self.label.setText(_translate("MainWindow", "Width"))
-        self.lineEdit.setText(_translate("MainWindow", "210"))
+        self.lineEdit.setText(_translate("MainWindow", "200"))
         self.label_2.setText(_translate("MainWindow", "Height"))
-        self.lineEdit_2.setText(_translate("MainWindow", "280"))
+        self.lineEdit_2.setText(_translate("MainWindow", "190"))
         self.checkBox.setText(_translate("MainWindow", "Monofyllo"))
         self.pushButton.setText(_translate("MainWindow", "Calculate"))
         self.groupBox_4.setTitle(_translate("MainWindow", "Montaz"))
@@ -233,6 +234,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "preferences"))
 
 
+
     def calc(self):
         papers = []
         for i in range(self.comboBox.count()):
@@ -241,9 +243,16 @@ class Ui_MainWindow(object):
         height = int(self.lineEdit_2.text())
         #print(len(papers))
         page =[width, height]
-        monofyllo = self.checkBox.clicked
+        monofyllo = self.checkBox.isChecked()
         print(monofyllo)
-        self.pushButton.clicked.connect(lambda :diastaseis.betterUse(papers, page, monofyllo))
+        #self.pushButton.clicked.connect(lambda :diastaseis.betterUse(papers, page, monofyllo))
+        result =  diastaseis.betterUse(papers, page, monofyllo)
+
+        self.lineEdit_3.setText(QtCore.QCoreApplication.translate("MainWindow", str(result[1][1])))
+        self.lineEdit_4.setText(QtCore.QCoreApplication.translate("MainWindow", str(result[1][0])))
+        self.lineEdit_5.setText(QtCore.QCoreApplication.translate("MainWindow", result[0]))
+        self.lineEdit_6.setText(QtCore.QCoreApplication.translate("MainWindow", str(result[2])))
+        #print(result)
 
 
 
