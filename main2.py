@@ -217,7 +217,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "main"))
         self.checkBox_2.setText(_translate("MainWindow", "Enable"))
         self.groupBox_6.setTitle(_translate("MainWindow", "Add Paper"))
-        self.label_8.setText(_translate("MainWindow", "creep"))
+        self.label_8.setText(_translate("MainWindow", "bleed"))
         self.label_9.setText(_translate("MainWindow", "Gap"))
         self.label_7.setText(_translate("MainWindow", "Papers"))
         self.comboBox.setItemText(0, _translate("MainWindow", "610x860"))
