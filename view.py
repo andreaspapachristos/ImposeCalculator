@@ -44,10 +44,10 @@ class Ui_MainWindow(object):
     def drawrect(self):
         x = int (MainWindow.geometry().width()*0.6)
         y = int (MainWindow.geometry().height()*0.6)
-        page = [210, 290]
+        page = [240, 330]
         paper = [4, 2]
         #z =
-        hgap = (MainWindow.geometry().width() - page[0]*0.6*paper[0])//paper[0]
+        hgap = (MainWindow.geometry().width() - page[0]*0.6*paper[0])//3
         vgap = (MainWindow.geometry().height() - page[1]*0.6*paper[1])//3
         painter = QtGui.QPainter(self.label.pixmap())
         pen = QtGui.QPen()
@@ -61,6 +61,8 @@ class Ui_MainWindow(object):
                 painter.drawRect(int(hgap), int(vgap), int(page[0]*0.6), int(page[1]*0.6))
                 vgap += vgap + page[1]*0.6
                 #vgap = ((MainWindow.geometry().height() - page[1] * 0.6 * paper[1]) // 3) + page[1] * 0.6
+            if ((p+1) % 2 == 0):
+                hgap += (MainWindow.geometry().width() - page[0]*0.6*paper[0])//paper[0]
             hgap += page[0]*0.6
 
             #painter.drawRect(10, 70, 100, 60)
