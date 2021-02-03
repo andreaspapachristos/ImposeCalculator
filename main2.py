@@ -250,7 +250,7 @@ class Ui_MainWindow(object):
         monofyllo = self.checkBox.isChecked()
         print(monofyllo)
         #self.pushButton.clicked.connect(lambda :diastaseis.betterUse(papers, page, monofyllo))
-        result =  diastaseis.betterUse(papers, page, monofyllo)
+        result =  diastaseis.betterUse(papers, page, monofyllo, int(self.lineEdit_7.text()), int(self.lineEdit_8.text()))
 
         self.lineEdit_3.setText(QtCore.QCoreApplication.translate("MainWindow", str(result[1][1])))
         self.lineEdit_4.setText(QtCore.QCoreApplication.translate("MainWindow", str(result[1][0])))
