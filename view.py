@@ -16,7 +16,7 @@ from PyQt5.QtGui import QColor
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(600, 420)
+        MainWindow.resize(1000, 700)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -44,27 +44,30 @@ class Ui_MainWindow(object):
     def drawrect(self):
         x = int (MainWindow.geometry().width()*0.6)
         y = int (MainWindow.geometry().height()*0.6)
-        page = [240, 330]
+        page = [230, 300]
         paper = [4, 2]
         #z =
-        hgap = (MainWindow.geometry().width() - page[0]*0.6*paper[0])//3
-        vgap = (MainWindow.geometry().height() - page[1]*0.6*paper[1])//3
+        hgap = (MainWindow.geometry().width() - page[0]*paper[0])//(paper[0] - 1)
+        print(MainWindow.geometry().width())
+        #vgap = (MainWindow.geometry().height() - page[1]*paper[1])//3
         painter = QtGui.QPainter(self.label.pixmap())
         pen = QtGui.QPen()
         pen.setWidth(1)
         pen.setColor(QtGui.QColor("#EB5160"))
         painter.setPen(pen)
         for p in range(0,paper[0]):
-            vgap = ((MainWindow.geometry().height() - page[1] * 0.6 * paper[1]) // 3)
+            vgap = (MainWindow.geometry().height() - page[1] * paper[1]) // (paper[1] + 1 )
+            print(page[1] * paper[1])
             #hgap += hgap
             for m in range(0,paper[1]):
-                painter.drawRect(int(hgap), int(vgap), int(page[0]*0.6), int(page[1]*0.6))
-                vgap += vgap + page[1]*0.6
+                painter.drawRect(int(hgap), int(vgap), int(page[0]), int(page[1]))
+                vgap += vgap + page[1]
                 #vgap = ((MainWindow.geometry().height() - page[1] * 0.6 * paper[1]) // 3) + page[1] * 0.6
             if ((p+1) % 2 == 0):
-                hgap += (MainWindow.geometry().width() - page[0]*0.6*paper[0])//paper[0]
-            hgap += page[0]*0.6
-
+                hgap += (MainWindow.geometry().width() - page[0]*paper[0])//3
+                print(hgap)
+            hgap += page[0]
+            print(hgap)
             #painter.drawRect(10, 70, 100, 60)
 
 if __name__ == "__main__":
