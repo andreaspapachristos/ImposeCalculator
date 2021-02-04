@@ -16,7 +16,7 @@ from PyQt5.QtGui import QColor
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1000, 700)
+        #MainWindow.resize(1000, 700)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -31,7 +31,12 @@ class Ui_MainWindow(object):
         canvas = QtGui.QPixmap(MainWindow.frameGeometry().width(), MainWindow.frameGeometry().height())
         canvas.fill(Qt.white)
         self.label.setPixmap(canvas)
-        self.drawrect([230, 300], [4, 2])
+        #self.drawrect([200, 285], [4, 2])
+       # MainWindow.resize(size[0], size[1])
+       # self.page = page
+        #self.paper = paper
+        #self.landscape = landscape
+        #self.drawrect([page[0], page[1]], [paper[0], paper[1]])
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -41,10 +46,18 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label.setText(_translate("MainWindow", ""))
 
+    def __init__(self,  size, page, paper, landscape):
+        MainWindow.resize(size[0], size[1])
+        self.page = page
+        self.paper = paper
+        self.landscape = landscape
+        self.setupUi(MainWindow)
+        self.drawrect([page[0], page[1]], [paper[0], paper[1]])
+
 
     def drawrect(self, page, paper):
-        x = int (MainWindow.geometry().width()*0.6)
-        y = int (MainWindow.geometry().height()*0.6)
+        #x = int (MainWindow.geometry().width()*0.6)
+       # y = int (MainWindow.geometry().height()*0.6)
 
         #z =
         hgap = (MainWindow.geometry().width() - page[0]*paper[0])//(paper[0] - 1)
@@ -74,7 +87,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
+    ui = Ui_MainWindow([860, 610], [210, 290], [4, 2], True)
+    #ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
