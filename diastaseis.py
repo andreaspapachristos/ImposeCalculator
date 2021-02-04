@@ -90,15 +90,25 @@ def find4up(diaireteos, dieretis):
 
 
 def matchMontaz(**kwargs):
-    ph = kwargs.get('pageHeight') + 6
-    if (kwargs.get('paperHeight') < kwargs.get('paperWidth') ):
-        pph = kwargs.get('paperHeight') - 10
+    if ('bleed' in kwargs):
+        bleed = kwargs.get('bleed') *2
+    else: bleed = 6
+    ph = kwargs.get('pageHeight') + bleed #kwargs.get('bleed') *2
+    #else: ph = kwargs.get('pageHeight') + 6
+    if ('gap' in kwargs):
+        gap = kwargs.get('gap')
     else:
-        pph = kwargs.get('paperWidth') - 10
+        gap = 10
+    if (kwargs.get('paperHeight') < kwargs.get('paperWidth') ):
+
+        pph = kwargs.get('paperHeight') - gap
+        #else: pph = kwargs.get('paperHeight') - 10
+    else:
+        pph = kwargs.get('paperWidth') - gap #kwargs.get('gap')
 
     temp = []
     if kwargs.get('monofyllo', True):
-        pw = kwargs.get('pagewidth') + 6
+        pw = kwargs.get('pagewidth') + bleed #kwargs.get('bleed') * 2
         if (kwargs.get('paperHeight') < kwargs.get('paperWidth')):
             ppw = kwargs.get('paperWidth')
         else:
@@ -109,7 +119,7 @@ def matchMontaz(**kwargs):
         #print(temp)
         return (temp)
     else:
-        pw = (kwargs.get('pagewidth') * 2) + 6
+        pw = (kwargs.get('pagewidth') * 2) + bleed #kwargs.get('bleed') *2
         #ppw = kwargs.get('paperWidth')  # /2
         if (kwargs.get('paperHeight') < kwargs.get('paperWidth')):
             ppw = kwargs.get('paperWidth')
@@ -121,13 +131,13 @@ def matchMontaz(**kwargs):
         return (temp)
 
 
-def betterUse(papers, page, monofyllo):
+def betterUse(papers, page, monofyllo, bleed, gap):
     embadonp = page[0] * page[1]
     temp = 0
     result = []
     for n in papers:
-        m = matchMontaz(pagewidth=page[0], pageHeight=page[1], paperWidth=n[0], paperHeight=n[1], monofyllo=monofyllo)
-        embadon = (n[0] * n[1])
+        m = matchMontaz(pagewidth=page[0], pageHeight=page[1], paperWidth=n[0], paperHeight=n[1], monofyllo=monofyllo, bleed=int(bleed), gap=int(gap))
+        embadon = (n[0] * n[1]) #- (gap * n[0])
         #print(p)
         for p in m:
             if (monofyllo):

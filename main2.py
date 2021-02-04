@@ -138,6 +138,7 @@ class Ui_MainWindow(object):
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
+       # self.comboBox.addItem("")
         self.gridLayout_4.addWidget(self.comboBox, 0, 3, 1, 2)
         self.groupBox_7 = QtWidgets.QGroupBox(self.groupBox_6)
         self.groupBox_7.setTitle("")
@@ -203,9 +204,9 @@ class Ui_MainWindow(object):
         self.groupBox_3.setTitle(_translate("MainWindow", "Page"))
         self.groupBox.setTitle(_translate("MainWindow", "Dimensions"))
         self.label.setText(_translate("MainWindow", "Width"))
-        self.lineEdit.setText(_translate("MainWindow", "200"))
+        self.lineEdit.setPlaceholderText(_translate("MainWindow", "210"))
         self.label_2.setText(_translate("MainWindow", "Height"))
-        self.lineEdit_2.setText(_translate("MainWindow", "190"))
+        self.lineEdit_2.setPlaceholderText(_translate("MainWindow", "280"))
         self.checkBox.setText(_translate("MainWindow", "Monofyllo"))
         self.pushButton.setText(_translate("MainWindow", "Calculate"))
         self.groupBox_4.setTitle(_translate("MainWindow", "Montaz"))
@@ -220,6 +221,9 @@ class Ui_MainWindow(object):
         self.label_8.setText(_translate("MainWindow", "bleed"))
         self.label_9.setText(_translate("MainWindow", "Gap"))
         self.label_7.setText(_translate("MainWindow", "Papers"))
+        self.lineEdit_7.setPlaceholderText(_translate("MainWindow", "3"))
+        self.lineEdit_8.setPlaceholderText(_translate("MainWindow", "10"))
+        #self.comboBox.setItemText(0, _translate("MainWindow", "ALL"))
         self.comboBox.setItemText(0, _translate("MainWindow", "610x860"))
         self.comboBox.setItemText(1, _translate("MainWindow", "640x880"))
         self.comboBox.setItemText(2, _translate("MainWindow", "650x960"))
@@ -232,11 +236,15 @@ class Ui_MainWindow(object):
         self.checkBox_4.setText(_translate("MainWindow", "centimeters"))
         self.checkBox_5.setText(_translate("MainWindow", "Auto- Draw"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "preferences"))
-
+        self.lineEdit.setValidator(QtGui.QIntValidator())
+        self.lineEdit.setMaxLength(3)
+        self.lineEdit_2.setValidator(QtGui.QIntValidator())
+        self.lineEdit_2.setMaxLength(3)
 
 
     def calc(self):
         papers = []
+
         for i in range(self.comboBox.count()):
             papers.append([int(self.comboBox.itemText(i).split('x', 1)[j]) for j in range(2)])
         width = int(self.lineEdit.text())
@@ -246,13 +254,21 @@ class Ui_MainWindow(object):
         monofyllo = self.checkBox.isChecked()
         print(monofyllo)
         #self.pushButton.clicked.connect(lambda :diastaseis.betterUse(papers, page, monofyllo))
-        result =  diastaseis.betterUse(papers, page, monofyllo)
+        if (self.lineEdit_7.text()):
+            bleed = int(self.lineEdit_7.text())
+        else: bleed = int(self.lineEdit_7.placeholderText())
+        if (self.lineEdit_8.text()):
+            gap = int(self.lineEdit_8.text())
+        else: gap = int(self.lineEdit_8.placeholderText())
+
+        result =  diastaseis.betterUse(papers, page, monofyllo, bleed, gap)
 
         self.lineEdit_3.setText(QtCore.QCoreApplication.translate("MainWindow", str(result[1][1])))
         self.lineEdit_4.setText(QtCore.QCoreApplication.translate("MainWindow", str(result[1][0])))
         self.lineEdit_5.setText(QtCore.QCoreApplication.translate("MainWindow", result[0]))
         self.lineEdit_6.setText(QtCore.QCoreApplication.translate("MainWindow", str(result[2])))
         #print(result)
+
 
 
 
