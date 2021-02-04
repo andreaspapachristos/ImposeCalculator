@@ -221,8 +221,8 @@ class Ui_MainWindow(object):
         self.label_8.setText(_translate("MainWindow", "bleed"))
         self.label_9.setText(_translate("MainWindow", "Gap"))
         self.label_7.setText(_translate("MainWindow", "Papers"))
-        self.lineEdit_7.setPlaceholderText(_translate("MainWindow", "3 mm"))
-        self.lineEdit_8.setPlaceholderText(_translate("MainWindow", "10 mm"))
+        self.lineEdit_7.setPlaceholderText(_translate("MainWindow", "3"))
+        self.lineEdit_8.setPlaceholderText(_translate("MainWindow", "10"))
         #self.comboBox.setItemText(0, _translate("MainWindow", "ALL"))
         self.comboBox.setItemText(0, _translate("MainWindow", "610x860"))
         self.comboBox.setItemText(1, _translate("MainWindow", "640x880"))
@@ -236,11 +236,15 @@ class Ui_MainWindow(object):
         self.checkBox_4.setText(_translate("MainWindow", "centimeters"))
         self.checkBox_5.setText(_translate("MainWindow", "Auto- Draw"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "preferences"))
-
+        self.lineEdit.setValidator(QtGui.QIntValidator())
+        self.lineEdit.setMaxLength(3)
+        self.lineEdit_2.setValidator(QtGui.QIntValidator())
+        self.lineEdit_2.setMaxLength(3)
 
 
     def calc(self):
         papers = []
+
         for i in range(self.comboBox.count()):
             papers.append([int(self.comboBox.itemText(i).split('x', 1)[j]) for j in range(2)])
         width = int(self.lineEdit.text())
@@ -250,13 +254,21 @@ class Ui_MainWindow(object):
         monofyllo = self.checkBox.isChecked()
         print(monofyllo)
         #self.pushButton.clicked.connect(lambda :diastaseis.betterUse(papers, page, monofyllo))
-        result =  diastaseis.betterUse(papers, page, monofyllo, int(self.lineEdit_7.text()), int(self.lineEdit_8.text()))
+        if (self.lineEdit_7.text()):
+            bleed = int(self.lineEdit_7.text())
+        else: bleed = int(self.lineEdit_7.placeholderText())
+        if (self.lineEdit_8.text()):
+            gap = int(self.lineEdit_8.text())
+        else: gap = int(self.lineEdit_8.placeholderText())
+
+        result =  diastaseis.betterUse(papers, page, monofyllo, bleed, gap)
 
         self.lineEdit_3.setText(QtCore.QCoreApplication.translate("MainWindow", str(result[1][1])))
         self.lineEdit_4.setText(QtCore.QCoreApplication.translate("MainWindow", str(result[1][0])))
         self.lineEdit_5.setText(QtCore.QCoreApplication.translate("MainWindow", result[0]))
         self.lineEdit_6.setText(QtCore.QCoreApplication.translate("MainWindow", str(result[2])))
         #print(result)
+
 
 
 
