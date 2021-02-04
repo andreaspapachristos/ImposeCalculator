@@ -31,7 +31,7 @@ class Ui_MainWindow(object):
         canvas = QtGui.QPixmap(MainWindow.frameGeometry().width(), MainWindow.frameGeometry().height())
         canvas.fill(Qt.white)
         self.label.setPixmap(canvas)
-        self.drawrect()
+        self.drawrect([230, 300], [4, 2])
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -41,11 +41,11 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label.setText(_translate("MainWindow", ""))
 
-    def drawrect(self):
+
+    def drawrect(self, page, paper):
         x = int (MainWindow.geometry().width()*0.6)
         y = int (MainWindow.geometry().height()*0.6)
-        page = [230, 300]
-        paper = [4, 2]
+
         #z =
         hgap = (MainWindow.geometry().width() - page[0]*paper[0])//(paper[0] - 1)
         print(MainWindow.geometry().width())

@@ -241,8 +241,8 @@ class Ui_MainWindow(object):
         self.lineEdit_2.setValidator(QtGui.QIntValidator())
         self.lineEdit_2.setMaxLength(3)
 
-
     def calc(self):
+
         papers = []
 
         for i in range(self.comboBox.count()):
@@ -254,10 +254,10 @@ class Ui_MainWindow(object):
         monofyllo = self.checkBox.isChecked()
         print(monofyllo)
         #self.pushButton.clicked.connect(lambda :diastaseis.betterUse(papers, page, monofyllo))
-        if (self.lineEdit_7.text()):
+        if self.lineEdit_7.text():
             bleed = int(self.lineEdit_7.text())
         else: bleed = int(self.lineEdit_7.placeholderText())
-        if (self.lineEdit_8.text()):
+        if self.lineEdit_8.text():
             gap = int(self.lineEdit_8.text())
         else: gap = int(self.lineEdit_8.placeholderText())
 
