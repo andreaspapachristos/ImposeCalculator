@@ -87,7 +87,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow([860, 610], [210, 290], [4, 2], True)
+    ui = Ui_MainWindow([1000, 720], [235, 297], [4, 2], True)
     #ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
