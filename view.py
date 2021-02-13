@@ -75,15 +75,15 @@ class Ui_MainWindow(object):
                 vgap = (MainWindow.geometry().height() - page[1] * paper[0]) // (paper[0] + 1)
         else:
             if paper[2] == 0:
-                hgap = (MainWindow.geometry().width() - page[0]*paper[0]*2 )//((paper[0] *2) - 1)
+                hgap = (MainWindow.geometry().width() - page[0]*paper[0]*2)//((paper[0] * 2) - 1)
                 #print(MainWindow.geometry().width())
                 #vgap = (MainWindow.geometry().height() - page[1]*paper[1])//3
 
-                for p in range(0,paper[0] * 2):
+                for p in range(0, paper[0] * 2):
                     vgap = (MainWindow.geometry().height() - page[1] * paper[1]) // (paper[1] + 1)
                     print(page[1] * paper[1])
                     #hgap += hgap
-                    for m in range(0,paper[1]):
+                    for m in range(0, paper[1]):
                         painter.drawRect(int(hgap), int(vgap), int(page[0]), int(page[1]))
                         vgap += vgap + page[1]
                         #vgap = ((MainWindow.geometry().height() - page[1] * 0.6 * paper[1]) // 3) + page[1] * 0.6
