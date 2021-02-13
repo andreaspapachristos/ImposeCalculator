@@ -147,19 +147,19 @@ class Ui_MainWindow(object):
         self.gridLayout_6.setObjectName("gridLayout_6")
         self.toolButton = QtWidgets.QToolButton(self.groupBox_7)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("Downloads/splashy_icons_icons_pack_120729/add.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("/home/master/Downloads/splashy_icons_icons_pack_120729/add.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.toolButton.setIcon(icon)
         self.toolButton.setObjectName("toolButton")
         self.gridLayout_6.addWidget(self.toolButton, 0, 0, 1, 1)
         self.toolButton_2 = QtWidgets.QToolButton(self.groupBox_7)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("Downloads/splashy_icons_icons_pack_120729/pencil.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("/home/master/Downloads/splashy_icons_icons_pack_120729/pencil.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.toolButton_2.setIcon(icon1)
         self.toolButton_2.setObjectName("toolButton_2")
         self.gridLayout_6.addWidget(self.toolButton_2, 0, 1, 1, 1)
         self.toolButton_3 = QtWidgets.QToolButton(self.groupBox_7)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("Downloads/splashy_icons_icons_pack_120729/gem_okay.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("/home/master/Downloads/splashy_icons_icons_pack_120729/gem_okay.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.toolButton_3.setIcon(icon2)
         self.toolButton_3.setObjectName("toolButton_3")
         self.gridLayout_6.addWidget(self.toolButton_3, 0, 2, 1, 1)
@@ -241,8 +241,8 @@ class Ui_MainWindow(object):
         self.lineEdit_2.setValidator(QtGui.QIntValidator())
         self.lineEdit_2.setMaxLength(3)
 
-
     def calc(self):
+
         papers = []
 
         for i in range(self.comboBox.count()):
@@ -254,14 +254,14 @@ class Ui_MainWindow(object):
         monofyllo = self.checkBox.isChecked()
         print(monofyllo)
         #self.pushButton.clicked.connect(lambda :diastaseis.betterUse(papers, page, monofyllo))
-        if (self.lineEdit_7.text()):
+        if self.lineEdit_7.text():
             bleed = int(self.lineEdit_7.text())
         else: bleed = int(self.lineEdit_7.placeholderText())
-        if (self.lineEdit_8.text()):
+        if self.lineEdit_8.text():
             gap = int(self.lineEdit_8.text())
         else: gap = int(self.lineEdit_8.placeholderText())
 
-        result =  diastaseis.betterUse(papers, page, monofyllo, bleed, gap)
+        result = diastaseis.betterUse(papers, page, monofyllo, bleed, gap)
 
         self.lineEdit_3.setText(QtCore.QCoreApplication.translate("MainWindow", str(result[1][1])))
         self.lineEdit_4.setText(QtCore.QCoreApplication.translate("MainWindow", str(result[1][0])))

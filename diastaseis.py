@@ -90,16 +90,16 @@ def find4up(diaireteos, dieretis):
 
 
 def matchMontaz(**kwargs):
-    if ('bleed' in kwargs):
+    if 'bleed' in kwargs:
         bleed = kwargs.get('bleed') *2
     else: bleed = 6
     ph = kwargs.get('pageHeight') + bleed #kwargs.get('bleed') *2
     #else: ph = kwargs.get('pageHeight') + 6
-    if ('gap' in kwargs):
+    if 'gap' in kwargs:
         gap = kwargs.get('gap')
     else:
         gap = 10
-    if (kwargs.get('paperHeight') < kwargs.get('paperWidth') ):
+    if kwargs.get('paperHeight') < kwargs.get('paperWidth'):
 
         pph = kwargs.get('paperHeight') - gap
         #else: pph = kwargs.get('paperHeight') - 10
@@ -114,19 +114,19 @@ def matchMontaz(**kwargs):
         else:
             ppw = kwargs.get('paperHeight')
         #ppw = kwargs.get('paperWidth')
-        temp.append([ppw // pw, pph // ph])
-        temp.append([ppw // ph, pph // pw])
+        temp.append([ppw // pw, pph // ph, 0])
+        temp.append([ppw // ph, pph // pw, 1])
         #print(temp)
         return (temp)
     else:
         pw = (kwargs.get('pagewidth') * 2) + bleed #kwargs.get('bleed') *2
         #ppw = kwargs.get('paperWidth')  # /2
-        if (kwargs.get('paperHeight') < kwargs.get('paperWidth')):
+        if kwargs.get('paperHeight') < kwargs.get('paperWidth'):
             ppw = kwargs.get('paperWidth')
         else:
             ppw = kwargs.get('paperHeight')
-        temp.append([ppw // pw, find4up(pph, ph)])  # pph//ph]
-        temp.append([find4up(ppw, ph), pph // pw])  # ppw//ph
+        temp.append([ppw // pw, find4up(pph, ph), 0])  # pph//ph]
+        temp.append([find4up(ppw, ph), pph // pw, 1])  # ppw//ph
         #print(temp)
         return (temp)
 
@@ -140,15 +140,16 @@ def betterUse(papers, page, monofyllo, bleed, gap):
         embadon = (n[0] * n[1]) #- (gap * n[0])
         #print(p)
         for p in m:
-            if (monofyllo):
+            if monofyllo:
                 y = (p[0] * p[1]) * embadonp
                 #pages = p[0] * p[1]
             else:
                 y = (p[0] * p[1]) * embadonp * 2
             #print(format(y / embadon, '.2f'))
-            if (float(format(y/embadon,'.4f')) >= float(temp)):
+            if float(format(y / embadon, '.4f')) >= float(temp):
                 temp = format(y/embadon,'.2f')
                 xarti = n[0], n[1]
+                grid = p[0], p[1], p[2]
                 if(monofyllo):
                     pages = p[0] * p[1]
                 else:
@@ -156,7 +157,8 @@ def betterUse(papers, page, monofyllo, bleed, gap):
     result.append(temp)
     result.append(xarti)
     result.append(pages)
-    print(result[0], result[1], result[2])
+    result.append(grid)
+    print(result[0], result[1], result[2], result[3])
     return result
 
 
@@ -172,5 +174,5 @@ def getScheme(pages):
 if __name__ == '__main__':
     # print(find4up(880, 80))
     # matchMontaz(pagewidth=210, pageHeight=280, paperWidth=860, paperHeight=610, monofyllo=False)
-     betterUse([[610,860],[880,640],[1000,700]], [340, 480], False)
+     betterUse([[610,860],[880,640],[1000,700]], [340, 480], False, bleed=3, gap=10)
     #getScheme(132)
