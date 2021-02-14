@@ -73,17 +73,18 @@ class Ui_MainWindow(object):
                 #for p in range(0, paper[0]):
 
             else:
-                hgap = (MainWindow.geometry().width() - page[1]*paper[0])//((paper[0]) + 1)
+                hgap= (MainWindow.geometry().width() - page[1]*paper[0])//((paper[0]) + 1)
                 vgap = (MainWindow.geometry().height() - page[0] * paper[1]) // (paper[1] + 1)
                 x = page[1]
                 y = page[0]
+                n = hgap
             for p in range(0, paper[0]):
                 z = vgap
 
                 for m in range(0, paper[1]):
-                    painter.drawRect(int(hgap), int(z), int(x), int(y))
+                    painter.drawRect(int(n), int(z), int(x), int(y))
                     z += vgap + y
-                hgap += x
+                n += hgap + x
         else:
             if paper[2] == 0:
                 hgap = (MainWindow.geometry().width() - page[0]*paper[0]*2)//((paper[0] * 2) - 1)
@@ -109,7 +110,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow([1000, 700], [220, 320], [4, 2, 0], False)
+    ui = Ui_MainWindow([1000, 700], [165, 230], [4, 4, 1], False)
     #ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
