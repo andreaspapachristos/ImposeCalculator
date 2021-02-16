@@ -52,8 +52,13 @@ class Ui_MainWindow(object):
         self.paper = paper
         self.monofyllo = monofyllo
         self.setupUi(MainWindow)
-        self.drawrect([page[0], page[1]], [paper[0], paper[1], paper[2]], True)
+        self.drawrect([page[0], page[1]], [paper[0], paper[1], paper[2]], False)
 
+    def spreads(self, monofyllo):
+        if monofyllo:
+            return 1
+        else:
+            return 2
 
     def drawrect(self, page, paper, monofyllo):
 
@@ -65,13 +70,13 @@ class Ui_MainWindow(object):
         #z =
         #
         if paper[2] == 0:
-            hgap = (MainWindow.geometry().width() - page[0] * paper[0]) // ((paper[0]) + 1)
+            hgap = (MainWindow.geometry().width() - page[0] * paper[0] * self.spreads(monofyllo)) // ((paper[0] * self.spreads(monofyllo)) + 1)
             vgap = (MainWindow.geometry().height() - page[1] * paper[1]) // (paper[1] + 1)
             x = page[0]
             y = page[1]
 
         else:
-            hgap= (MainWindow.geometry().width() - page[1]*paper[0])//((paper[0]) + 1)
+            hgap= (MainWindow.geometry().width() - page[1]*paper[0] * self.spreads(monofyllo))//((paper[0] * self.spreads(monofyllo)) + 1)
             vgap = (MainWindow.geometry().height() - page[0] * paper[1]) // (paper[1] + 1)
             x = page[1]
             y = page[0]
@@ -110,7 +115,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow([860, 610], [200, 270], [4, 2, 0], False)
+    ui = Ui_MainWindow([860, 610], [200, 270], [2, 2, 0], False)
     #ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
