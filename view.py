@@ -63,19 +63,20 @@ class Ui_MainWindow(object):
         pen.setColor(QtGui.QColor("#EB5160"))
         painter.setPen(pen)
         #z =
-        if monofyllo:
-            if paper[2] == 0:
-                hgap = (MainWindow.geometry().width() - page[0] * paper[0]) // ((paper[0]) + 1)
-                vgap = (MainWindow.geometry().height() - page[1] * paper[1]) // (paper[1] + 1)
-                x = page[0]
-                y = page[1]
+        #
+        if paper[2] == 0:
+            hgap = (MainWindow.geometry().width() - page[0] * paper[0]) // ((paper[0]) + 1)
+            vgap = (MainWindow.geometry().height() - page[1] * paper[1]) // (paper[1] + 1)
+            x = page[0]
+            y = page[1]
 
-            else:
-                hgap= (MainWindow.geometry().width() - page[1]*paper[0])//((paper[0]) + 1)
-                vgap = (MainWindow.geometry().height() - page[0] * paper[1]) // (paper[1] + 1)
-                x = page[1]
-                y = page[0]
-            n = hgap
+        else:
+            hgap= (MainWindow.geometry().width() - page[1]*paper[0])//((paper[0]) + 1)
+            vgap = (MainWindow.geometry().height() - page[0] * paper[1]) // (paper[1] + 1)
+            x = page[1]
+            y = page[0]
+        n = hgap
+        if monofyllo:
             for p in range(0, paper[0]):
                 z = vgap
 
@@ -84,27 +85,32 @@ class Ui_MainWindow(object):
                     z += vgap + y
                 n += hgap + x
         else:
-            if paper[2] == 0:
-                hgap = (MainWindow.geometry().width() - page[0]*paper[0]*2)//((paper[1] * 2) - 1)
+           # if paper[2] == 0:
+                #hgap = (MainWindow.geometry().width() - page[0]*paper[1]*2)//((paper[1] * 2) - 1)
 
-                for p in range(0, paper[1] * 2):
-                    vgap = (MainWindow.geometry().height() - page[1] * paper[1]) // (paper[0] + 1)
-                    print(page[1] * paper[1])
-                    for m in range(0, paper[0]):
-                        painter.drawRect(int(hgap), int(vgap), int(page[0]), int(page[1]))
-                        vgap += vgap + page[1]
-                    if (p + 1) % 2 == 0:
-                        hgap += (MainWindow.geometry().width() - page[0]*paper[0]*2)//(paper[0] + 1)
-                        print(hgap)
-                    hgap += page[0]
-                    print(hgap)
+            for p in range(0, paper[0] * 2):
+               # vgap = (MainWindow.geometry().height() - page[1] * paper[1]) // (paper[0] + 1)
+                z = vgap
+                # print(page[1] * paper[1])
+                for m in range(0, paper[1]):
+                   # painter.drawRect(int(hgap), int(vgap), int(page[0]), int(page[1]))
+                   painter.drawRect(int(n), int(z), int(x), int(y))
+                    #vgap += vgap + page[1]
+                   z += vgap + y
+                if (p + 1) % 2 == 0:
+                # hgap += (MainWindow.geometry().width() - page[0]*paper[0]*2)//(paper[0] + 1)
+                  n += hgap
+                     #print(hgap)
+            #hgap += page[0]
+                n += x
+                    #print(hgap)
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow([860, 610], [200, 280], [4, 2, 0], False)
+    ui = Ui_MainWindow([860, 610], [200, 270], [4, 2, 0], False)
     #ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
