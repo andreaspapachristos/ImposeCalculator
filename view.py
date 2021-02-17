@@ -126,7 +126,7 @@ class Ui_MainWindow(object):
                             z += vgap
                         # print(hgap)
                     # hgap += page[0]
-                    n += x
+                    n += x + hgap
 
 if __name__ == "__main__":
     import sys
