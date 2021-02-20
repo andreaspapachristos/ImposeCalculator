@@ -13,8 +13,8 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QColor
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
+class Ui_MainWindow1(object):
+    def setup(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         #MainWindow.resize(1000, 700)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -46,13 +46,13 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label.setText(_translate("MainWindow", ""))
 
-    def __init__(self,  size, page, paper, monofyllo):
+    def __init__(self, MainWindow, size, page, paper, monofyllo):
         MainWindow.resize(size[0], size[1])
         self.page = page
         self.paper = paper
         self.monofyllo = monofyllo
-        self.setupUi(MainWindow)
-        self.drawrect([page[0], page[1]], [paper[0], paper[1], paper[2]], monofyllo)
+        self.setup(MainWindow)
+        self.drawrect(MainWindow, [page[0], page[1]], [paper[0], paper[1], paper[2]], monofyllo)
 
     def spreads(self, monofyllo):
         if monofyllo:
@@ -60,7 +60,7 @@ class Ui_MainWindow(object):
         else:
             return 2
 
-    def drawrect(self, page, paper, monofyllo):
+    def drawrect(self, MainWindow, page, paper, monofyllo):
 
         painter = QtGui.QPainter(self.label.pixmap())
         pen = QtGui.QPen()
@@ -106,7 +106,7 @@ class Ui_MainWindow(object):
                        z += vgap + y
                     if (p + 1) % 2 == 0:
                     # hgap += (MainWindow.geometry().width() - page[0]*paper[0]*2)//(paper[0] + 1)
-                      n += hgap
+                      n += 2*hgap
                      #print(hgap)
                 #hgap += page[0]
                     n += x
@@ -124,7 +124,7 @@ class Ui_MainWindow(object):
                         #n += x + hgap
                         if (m + 1) % 2 == 0:
                         # hgap += (MainWindow.geometry().width() - page[0]*paper[0]*2)//(paper[0] + 1)
-                            z += vgap
+                            z += 2*vgap
                         # print(hgap)
                     # hgap += page[0]
                     n += x + hgap
@@ -133,7 +133,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow([960, 650], [100, 110], [8, 3, 1], False)
-    #ui.setupUi(MainWindow)
+    ui = Ui_MainWindow1(MainWindow, [960, 650], [110, 100], [4, 6, 0], False)
+    #ui.setup(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
