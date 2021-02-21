@@ -1,27 +1,5 @@
 # from itertools import chain
 
-import csv
-import numpy as np
-
-
-def createCsv():
-    with open("/home/master/diastaseis.csv", "w") as csv_file:
-        writer = csv.writer(csv_file, delimiter=',', lineterminator='\n')
-        for i in range(100, 250, 5):
-            for z in range(100, 350, 5):
-                data = [i, z]
-                writer.writerows([data])
-
-
-def fixPaper(width, height):
-    list = []
-    for i in range(0, 5):
-        if width > height:
-            width /= 2
-        else:
-            height /= 2
-        list.append([width, height])
-    return (list)
 
 
 def matchPage(width, height):
