@@ -1,4 +1,4 @@
-# cameraUtil
+# ImposeCalculator
 Python-Practise.<br />
 A utility for calculate the imposition in prepress industry. It is usefull for the first idea of how a page can be impose it, in printing paper. <br />
 The name of repository is totaly out of the scope of the code and soon i will change it.<br />
