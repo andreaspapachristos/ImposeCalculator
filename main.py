@@ -13,7 +13,6 @@ from view import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -60,7 +59,7 @@ class Ui_MainWindow(object):
         self.gridLayout_5.addWidget(self.groupBox_3, 0, 0, 1, 1)
         self.groupBox_4 = QtWidgets.QGroupBox(self.tab)
         self.groupBox_4.setStyleSheet("background-color: rgb(0, 0, 0);\n"
-        "color: rgb(255, 255, 255);")
+                                      "color: rgb(255, 255, 255);")
         self.groupBox_4.setObjectName("groupBox_4")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.groupBox_4)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
@@ -107,10 +106,6 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addWidget(self.lineEdit_5, 1, 1, 1, 1)
         self.verticalLayout_2.addWidget(self.groupBox_5)
         self.gridLayout_5.addWidget(self.groupBox_4, 1, 0, 1, 1)
-        self.pushButton_2 = QtWidgets.QPushButton(self.tab)
-        self.pushButton_2.setStyleSheet("background-color: rgb(170, 0, 0);")
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.gridLayout_5.addWidget(self.pushButton_2, 2, 0, 1, 1)
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
@@ -145,7 +140,7 @@ class Ui_MainWindow(object):
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
-       # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
         self.gridLayout_4.addWidget(self.comboBox, 0, 3, 1, 2)
         self.groupBox_7 = QtWidgets.QGroupBox(self.groupBox_6)
         self.groupBox_7.setTitle("")
@@ -205,7 +200,6 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         self.pushButton.clicked.connect(self.calc)
 
-
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -223,7 +217,6 @@ class Ui_MainWindow(object):
         self.label_3.setText(_translate("MainWindow", "Width"))
         self.label_5.setText(_translate("MainWindow", "Pages"))
         self.label_6.setText(_translate("MainWindow", "Usage"))
-        self.pushButton_2.setText(_translate("MainWindow", "Draw"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "main"))
         self.checkBox_2.setText(_translate("MainWindow", "Enable"))
         self.groupBox_6.setTitle(_translate("MainWindow", "Add Paper"))
@@ -232,7 +225,7 @@ class Ui_MainWindow(object):
         self.label_7.setText(_translate("MainWindow", "Papers"))
         self.lineEdit_7.setPlaceholderText(_translate("MainWindow", "3"))
         self.lineEdit_8.setPlaceholderText(_translate("MainWindow", "10"))
-        #self.comboBox.setItemText(0, _translate("MainWindow", "ALL"))
+        # self.comboBox.setItemText(0, _translate("MainWindow", "ALL"))
         self.comboBox.setItemText(0, _translate("MainWindow", "610x860"))
         self.comboBox.setItemText(1, _translate("MainWindow", "640x880"))
         self.comboBox.setItemText(2, _translate("MainWindow", "650x960"))
@@ -250,8 +243,6 @@ class Ui_MainWindow(object):
         self.lineEdit_2.setValidator(QtGui.QIntValidator())
         self.lineEdit_2.setMaxLength(3)
 
-
-
     def calc(self):
 
         papers = []
@@ -260,17 +251,18 @@ class Ui_MainWindow(object):
             papers.append([int(self.comboBox.itemText(i).split('x', 1)[j]) for j in range(2)])
         width = int(self.lineEdit.text())
         height = int(self.lineEdit_2.text())
-        #print(len(papers))
-        page =[width, height]
+        # print(len(papers))
+        page = [width, height]
         monofyllo = self.checkBox.isChecked()
         print(monofyllo)
-        #self.pushButton.clicked.connect(lambda :diastaseis.betterUse(papers, page, monofyllo))
         if self.lineEdit_7.text():
             bleed = int(self.lineEdit_7.text())
-        else: bleed = int(self.lineEdit_7.placeholderText())
+        else:
+            bleed = int(self.lineEdit_7.placeholderText())
         if self.lineEdit_8.text():
             gap = int(self.lineEdit_8.text())
-        else: gap = int(self.lineEdit_8.placeholderText())
+        else:
+            gap = int(self.lineEdit_8.placeholderText())
 
         result = diastaseis.betterUse(papers, page, monofyllo, bleed, gap)
 
@@ -282,21 +274,13 @@ class Ui_MainWindow(object):
         if self.checkBox_5.isChecked():
             self.window = QtWidgets.QMainWindow()
             self.ui = Ui_MainWindow1(self.window, [result[1][1], result[1][0]], page, result[3], monofyllo)
-            #ui.setup(window)
             self.window.show()
-                #self.graph = view(result[1], page, result[3], monofyllo)
 
-                #self.graph.show()
-        #print(result)
 
 if __name__ == "__main__":
-
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
-
-
-
