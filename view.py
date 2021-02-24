@@ -10,7 +10,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QColor
+
 
 
 class Ui_MainWindow1(object):
@@ -43,7 +43,7 @@ class Ui_MainWindow1(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Scheme"))
         self.label.setText(_translate("MainWindow", ""))
 
     def __init__(self, MainWindow, size, page, paper, monofyllo):

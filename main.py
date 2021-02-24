@@ -13,7 +13,6 @@ from view import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -60,7 +59,7 @@ class Ui_MainWindow(object):
         self.gridLayout_5.addWidget(self.groupBox_3, 0, 0, 1, 1)
         self.groupBox_4 = QtWidgets.QGroupBox(self.tab)
         self.groupBox_4.setStyleSheet("background-color: rgb(0, 0, 0);\n"
-        "color: rgb(255, 255, 255);")
+                                      "color: rgb(255, 255, 255);")
         self.groupBox_4.setObjectName("groupBox_4")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.groupBox_4)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
@@ -107,10 +106,6 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addWidget(self.lineEdit_5, 1, 1, 1, 1)
         self.verticalLayout_2.addWidget(self.groupBox_5)
         self.gridLayout_5.addWidget(self.groupBox_4, 1, 0, 1, 1)
-        self.pushButton_2 = QtWidgets.QPushButton(self.tab)
-        self.pushButton_2.setStyleSheet("background-color: rgb(170, 0, 0);")
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.gridLayout_5.addWidget(self.pushButton_2, 2, 0, 1, 1)
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
@@ -145,7 +140,7 @@ class Ui_MainWindow(object):
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
-       # self.comboBox.addItem("")
+        # self.comboBox.addItem("")
         self.gridLayout_4.addWidget(self.comboBox, 0, 3, 1, 2)
         self.groupBox_7 = QtWidgets.QGroupBox(self.groupBox_6)
         self.groupBox_7.setTitle("")
@@ -154,19 +149,19 @@ class Ui_MainWindow(object):
         self.gridLayout_6.setObjectName("gridLayout_6")
         self.toolButton = QtWidgets.QToolButton(self.groupBox_7)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("/home/master/Downloads/splashy_icons_icons_pack_120729/add.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("img/add.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.toolButton.setIcon(icon)
         self.toolButton.setObjectName("toolButton")
         self.gridLayout_6.addWidget(self.toolButton, 0, 0, 1, 1)
         self.toolButton_2 = QtWidgets.QToolButton(self.groupBox_7)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("/home/master/Downloads/splashy_icons_icons_pack_120729/pencil.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("img/pencil.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.toolButton_2.setIcon(icon1)
         self.toolButton_2.setObjectName("toolButton_2")
         self.gridLayout_6.addWidget(self.toolButton_2, 0, 1, 1, 1)
         self.toolButton_3 = QtWidgets.QToolButton(self.groupBox_7)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("/home/master/Downloads/splashy_icons_icons_pack_120729/gem_okay.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("img/gem_okay.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.toolButton_3.setIcon(icon2)
         self.toolButton_3.setObjectName("toolButton_3")
         self.gridLayout_6.addWidget(self.toolButton_3, 0, 2, 1, 1)
@@ -187,8 +182,14 @@ class Ui_MainWindow(object):
         self.groupBox_9.setGeometry(QtCore.QRect(0, 380, 181, 151))
         self.groupBox_9.setTitle("")
         self.groupBox_9.setObjectName("groupBox_9")
+        self.textBrowser = QtWidgets.QTextBrowser(self.groupBox_9)
+        self.textBrowser.setGeometry(QtCore.QRect(0, 0, 181, 111))
+        self.textBrowser.setObjectName("textBrowser")
+        self.textBrowser_2 = QtWidgets.QTextBrowser(self.tab_2)
+        self.textBrowser_2.setGeometry(QtCore.QRect(0, 230, 181, 51))
+        self.textBrowser_2.setObjectName("textBrowser_2")
         self.checkBox_5 = QtWidgets.QCheckBox(self.groupBox_9)
-        self.checkBox_5.setGeometry(QtCore.QRect(0, 30, 111, 20))
+        self.checkBox_5.setGeometry(QtCore.QRect(0, 30, 111, 190))
         self.checkBox_5.setObjectName("checkBox_5")
         self.tabWidget.addTab(self.tab_2, "")
         self.horizontalLayout.addWidget(self.tabWidget)
@@ -205,37 +206,43 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         self.pushButton.clicked.connect(self.calc)
 
-
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.groupBox_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>Page to be imposed</p></body></html>"))
         self.groupBox_3.setTitle(_translate("MainWindow", "Page"))
         self.groupBox.setTitle(_translate("MainWindow", "Dimensions"))
         self.label.setText(_translate("MainWindow", "Width"))
+        self.lineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>Width of imposed page</p></body></html>"))
         self.lineEdit.setPlaceholderText(_translate("MainWindow", "210"))
         self.label_2.setText(_translate("MainWindow", "Height"))
+        self.lineEdit_2.setToolTip(_translate("MainWindow", "<html><head/><body><p>Height of imposed page</p></body></html>"))
         self.lineEdit_2.setPlaceholderText(_translate("MainWindow", "280"))
         self.checkBox.setText(_translate("MainWindow", "Monofyllo"))
         self.pushButton.setText(_translate("MainWindow", "Calculate"))
+        self.groupBox_4.setToolTip(_translate("MainWindow", "<html><head/><body><p>Results</p></body></html>"))
         self.groupBox_4.setTitle(_translate("MainWindow", "Montaz"))
         self.groupBox_2.setTitle(_translate("MainWindow", "Paper"))
         self.label_4.setText(_translate("MainWindow", "Height"))
         self.label_3.setText(_translate("MainWindow", "Width"))
         self.label_5.setText(_translate("MainWindow", "Pages"))
         self.label_6.setText(_translate("MainWindow", "Usage"))
-        self.pushButton_2.setText(_translate("MainWindow", "Draw"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "main"))
+        self.checkBox_2.setToolTip(_translate("MainWindow","<html><head/><body><p><span style=\" color:#ff0000;\">Dangerous AREA</span></p></body></html>"))
         self.checkBox_2.setText(_translate("MainWindow", "Enable"))
         self.groupBox_6.setTitle(_translate("MainWindow", "Add Paper"))
+        self.label_8.setToolTip(_translate("MainWindow", "<html><head/><body><p>Page Bleed</p></body></html>"))
         self.label_8.setText(_translate("MainWindow", "bleed"))
+        self.label_9.setToolTip(_translate("MainWindow", "<html><head/><body><p>Offset gap at botom of the paper</p></body></html>"))
         self.label_9.setText(_translate("MainWindow", "Gap"))
+        self.label_7.setToolTip(_translate("MainWindow", "<html><head/><body><p>Papers list which calculation take place</p></body></html>"))
         self.label_7.setText(_translate("MainWindow", "Papers"))
         self.lineEdit_7.setPlaceholderText(_translate("MainWindow", "3"))
         self.lineEdit_8.setPlaceholderText(_translate("MainWindow", "10"))
-        #self.comboBox.setItemText(0, _translate("MainWindow", "ALL"))
-        self.comboBox.setItemText(0, _translate("MainWindow", "610x860"))
-        self.comboBox.setItemText(1, _translate("MainWindow", "640x880"))
-        self.comboBox.setItemText(2, _translate("MainWindow", "650x960"))
+        # self.comboBox.setItemText(0, _translate("MainWindow", "ALL"))
+        self.comboBox.setItemText(0, _translate("MainWindow", "500x700"))
+        self.comboBox.setItemText(1, _translate("MainWindow", "610x860"))
+        self.comboBox.setItemText(2, _translate("MainWindow", "640x880"))
         self.comboBox.setItemText(3, _translate("MainWindow", "700x1000"))
         self.toolButton.setText(_translate("MainWindow", "..."))
         self.toolButton_2.setText(_translate("MainWindow", "..."))
@@ -243,14 +250,24 @@ class Ui_MainWindow(object):
         self.groupBox_8.setTitle(_translate("MainWindow", "Units"))
         self.checkBox_3.setText(_translate("MainWindow", "milimeters"))
         self.checkBox_4.setText(_translate("MainWindow", "centimeters"))
+        self.textBrowser.setHtml(_translate("MainWindow",
+                                            "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                            "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                            "p, li { white-space: pre-wrap; }\n"
+                                            "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+                                            "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">By checking this button the utility open a new window with the </span><span style=\" font-weight:600; color:#ff5500;\">scheme</span><span style=\" font-weight:600;\"> of the impose template.</span></p></body></html>"))
+        self.textBrowser_2.setHtml(_translate("MainWindow",
+                                              "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                              "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                              "p, li { white-space: pre-wrap; }\n"
+                                              "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+                                              "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Units has effect only when adding or editing papers</span></p></body></html>"))
         self.checkBox_5.setText(_translate("MainWindow", "Auto- Draw"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "preferences"))
         self.lineEdit.setValidator(QtGui.QIntValidator())
         self.lineEdit.setMaxLength(3)
         self.lineEdit_2.setValidator(QtGui.QIntValidator())
         self.lineEdit_2.setMaxLength(3)
-
-
 
     def calc(self):
 
@@ -260,17 +277,18 @@ class Ui_MainWindow(object):
             papers.append([int(self.comboBox.itemText(i).split('x', 1)[j]) for j in range(2)])
         width = int(self.lineEdit.text())
         height = int(self.lineEdit_2.text())
-        #print(len(papers))
-        page =[width, height]
+        # print(len(papers))
+        page = [width, height]
         monofyllo = self.checkBox.isChecked()
         print(monofyllo)
-        #self.pushButton.clicked.connect(lambda :diastaseis.betterUse(papers, page, monofyllo))
         if self.lineEdit_7.text():
             bleed = int(self.lineEdit_7.text())
-        else: bleed = int(self.lineEdit_7.placeholderText())
+        else:
+            bleed = int(self.lineEdit_7.placeholderText())
         if self.lineEdit_8.text():
             gap = int(self.lineEdit_8.text())
-        else: gap = int(self.lineEdit_8.placeholderText())
+        else:
+            gap = int(self.lineEdit_8.placeholderText())
 
         result = diastaseis.betterUse(papers, page, monofyllo, bleed, gap)
 
@@ -282,21 +300,13 @@ class Ui_MainWindow(object):
         if self.checkBox_5.isChecked():
             self.window = QtWidgets.QMainWindow()
             self.ui = Ui_MainWindow1(self.window, [result[1][1], result[1][0]], page, result[3], monofyllo)
-            #ui.setup(window)
             self.window.show()
-                #self.graph = view(result[1], page, result[3], monofyllo)
 
-                #self.graph.show()
-        #print(result)
 
 if __name__ == "__main__":
-
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
-
-
-
