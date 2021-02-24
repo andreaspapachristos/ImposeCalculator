@@ -182,8 +182,14 @@ class Ui_MainWindow(object):
         self.groupBox_9.setGeometry(QtCore.QRect(0, 380, 181, 151))
         self.groupBox_9.setTitle("")
         self.groupBox_9.setObjectName("groupBox_9")
+        self.textBrowser = QtWidgets.QTextBrowser(self.groupBox_9)
+        self.textBrowser.setGeometry(QtCore.QRect(0, 0, 181, 111))
+        self.textBrowser.setObjectName("textBrowser")
+        self.textBrowser_2 = QtWidgets.QTextBrowser(self.tab_2)
+        self.textBrowser_2.setGeometry(QtCore.QRect(0, 230, 181, 51))
+        self.textBrowser_2.setObjectName("textBrowser_2")
         self.checkBox_5 = QtWidgets.QCheckBox(self.groupBox_9)
-        self.checkBox_5.setGeometry(QtCore.QRect(0, 30, 111, 20))
+        self.checkBox_5.setGeometry(QtCore.QRect(0, 30, 111, 190))
         self.checkBox_5.setObjectName("checkBox_5")
         self.tabWidget.addTab(self.tab_2, "")
         self.horizontalLayout.addWidget(self.tabWidget)
@@ -203,14 +209,18 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.groupBox_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>Page to be imposed</p></body></html>"))
         self.groupBox_3.setTitle(_translate("MainWindow", "Page"))
         self.groupBox.setTitle(_translate("MainWindow", "Dimensions"))
         self.label.setText(_translate("MainWindow", "Width"))
+        self.lineEdit.setToolTip(_translate("MainWindow", "<html><head/><body><p>Width of imposed page</p></body></html>"))
         self.lineEdit.setPlaceholderText(_translate("MainWindow", "210"))
         self.label_2.setText(_translate("MainWindow", "Height"))
+        self.lineEdit_2.setToolTip(_translate("MainWindow", "<html><head/><body><p>Height of imposed page</p></body></html>"))
         self.lineEdit_2.setPlaceholderText(_translate("MainWindow", "280"))
         self.checkBox.setText(_translate("MainWindow", "Monofyllo"))
         self.pushButton.setText(_translate("MainWindow", "Calculate"))
+        self.groupBox_4.setToolTip(_translate("MainWindow", "<html><head/><body><p>Results</p></body></html>"))
         self.groupBox_4.setTitle(_translate("MainWindow", "Montaz"))
         self.groupBox_2.setTitle(_translate("MainWindow", "Paper"))
         self.label_4.setText(_translate("MainWindow", "Height"))
@@ -218,17 +228,21 @@ class Ui_MainWindow(object):
         self.label_5.setText(_translate("MainWindow", "Pages"))
         self.label_6.setText(_translate("MainWindow", "Usage"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "main"))
+        self.checkBox_2.setToolTip(_translate("MainWindow","<html><head/><body><p><span style=\" color:#ff0000;\">Dangerous AREA</span></p></body></html>"))
         self.checkBox_2.setText(_translate("MainWindow", "Enable"))
         self.groupBox_6.setTitle(_translate("MainWindow", "Add Paper"))
+        self.label_8.setToolTip(_translate("MainWindow", "<html><head/><body><p>Page Bleed</p></body></html>"))
         self.label_8.setText(_translate("MainWindow", "bleed"))
+        self.label_9.setToolTip(_translate("MainWindow", "<html><head/><body><p>Offset gap at botom of the paper</p></body></html>"))
         self.label_9.setText(_translate("MainWindow", "Gap"))
+        self.label_7.setToolTip(_translate("MainWindow", "<html><head/><body><p>Papers list which calculation take place</p></body></html>"))
         self.label_7.setText(_translate("MainWindow", "Papers"))
         self.lineEdit_7.setPlaceholderText(_translate("MainWindow", "3"))
         self.lineEdit_8.setPlaceholderText(_translate("MainWindow", "10"))
         # self.comboBox.setItemText(0, _translate("MainWindow", "ALL"))
-        self.comboBox.setItemText(0, _translate("MainWindow", "610x860"))
-        self.comboBox.setItemText(1, _translate("MainWindow", "640x880"))
-        self.comboBox.setItemText(2, _translate("MainWindow", "650x960"))
+        self.comboBox.setItemText(0, _translate("MainWindow", "500x700"))
+        self.comboBox.setItemText(1, _translate("MainWindow", "610x860"))
+        self.comboBox.setItemText(2, _translate("MainWindow", "640x880"))
         self.comboBox.setItemText(3, _translate("MainWindow", "700x1000"))
         self.toolButton.setText(_translate("MainWindow", "..."))
         self.toolButton_2.setText(_translate("MainWindow", "..."))
@@ -236,6 +250,18 @@ class Ui_MainWindow(object):
         self.groupBox_8.setTitle(_translate("MainWindow", "Units"))
         self.checkBox_3.setText(_translate("MainWindow", "milimeters"))
         self.checkBox_4.setText(_translate("MainWindow", "centimeters"))
+        self.textBrowser.setHtml(_translate("MainWindow",
+                                            "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                            "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                            "p, li { white-space: pre-wrap; }\n"
+                                            "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+                                            "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">By checking this button the utility open a new window with the </span><span style=\" font-weight:600; color:#ff5500;\">scheme</span><span style=\" font-weight:600;\"> of the impose template.</span></p></body></html>"))
+        self.textBrowser_2.setHtml(_translate("MainWindow",
+                                              "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                              "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                              "p, li { white-space: pre-wrap; }\n"
+                                              "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+                                              "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Units has effect only when adding or editing papers</span></p></body></html>"))
         self.checkBox_5.setText(_translate("MainWindow", "Auto- Draw"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "preferences"))
         self.lineEdit.setValidator(QtGui.QIntValidator())
