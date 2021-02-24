@@ -58,8 +58,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.pushButton)
         self.gridLayout_5.addWidget(self.groupBox_3, 0, 0, 1, 1)
         self.groupBox_4 = QtWidgets.QGroupBox(self.tab)
-        self.groupBox_4.setStyleSheet("background-color: rgb(0, 0, 0);\n"
-                                      "color: rgb(255, 255, 255);")
+        self.groupBox_4.setStyleSheet("background-color: rgb(0, 0, 0);" "color: rgb(255, 255, 255);")
         self.groupBox_4.setObjectName("groupBox_4")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.groupBox_4)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
