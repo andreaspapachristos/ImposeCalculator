@@ -79,7 +79,7 @@ class Ui_MainWindow1(object):
         else:
             x = page[1]
             y = page[0]
-            hgap= (MainWindow.geometry().width() - x * paper[0]  )//((paper[0] ) + 1)
+            hgap= (MainWindow.geometry().width() - x * paper[0])//((paper[0] ) + 1)
             vgap = (MainWindow.geometry().height() - y * paper[1]*self.spreads(monofyllo)) // (paper[1]* self.spreads(monofyllo) + 1)
 
         n = hgap
