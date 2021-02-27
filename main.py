@@ -229,7 +229,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "main"))
         self.checkBox_2.setToolTip(_translate("MainWindow","<html><head/><body><p><span style=\" color:#ff0000;\">Dangerous AREA</span></p></body></html>"))
         self.checkBox_2.setText(_translate("MainWindow", "Enable"))
-        self.groupBox_6.setTitle(_translate("MainWindow", "Add Paper"))
+        self.groupBox_6.setTitle(_translate("MainWindow", "Set Paper"))
         self.label_8.setToolTip(_translate("MainWindow", "<html><head/><body><p>Page Bleed</p></body></html>"))
         self.label_8.setText(_translate("MainWindow", "bleed"))
         self.label_9.setToolTip(_translate("MainWindow", "<html><head/><body><p>Offset gap at botom of the paper</p></body></html>"))
@@ -239,7 +239,7 @@ class Ui_MainWindow(object):
         self.lineEdit_7.setPlaceholderText(_translate("MainWindow", "3"))
         self.lineEdit_8.setPlaceholderText(_translate("MainWindow", "10"))
         # self.comboBox.setItemText(0, _translate("MainWindow", "ALL"))
-        self.comboBox.setItemText(0, _translate("MainWindow", "500x700"))
+        self.comboBox.setItemText(0, _translate("MainWindow", "580x860"))
         self.comboBox.setItemText(1, _translate("MainWindow", "610x860"))
         self.comboBox.setItemText(2, _translate("MainWindow", "640x880"))
         self.comboBox.setItemText(3, _translate("MainWindow", "700x1000"))
@@ -271,9 +271,11 @@ class Ui_MainWindow(object):
     def calc(self):
 
         papers = []
-
-        for i in range(self.comboBox.count()):
-            papers.append([int(self.comboBox.itemText(i).split('x', 1)[j]) for j in range(2)])
+        if self.checkBox_2.isChecked():
+            papers.append([int(self.comboBox.currentText().split('x', 1)[j]) for j in range(2)])
+        else:
+            for i in range(self.comboBox.count()):
+                papers.append([int(self.comboBox.itemText(i).split('x', 1)[j]) for j in range(2)])
         width = int(self.lineEdit.text())
         height = int(self.lineEdit_2.text())
         # print(len(papers))

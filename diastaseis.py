@@ -1,7 +1,7 @@
 # from itertools import chain
 
 
-
+"""""
 def matchPage(width, height):
     width *= 2
     list = fixPaper(1000, 700)
@@ -22,7 +22,7 @@ def matchPage(width, height):
             # i[1] = height/i[0]
 
         print(temp)
-
+"""
 
 def find4up(diaireteos, dieretis):
     an = (12, 9, 8, 6, 4, 3, 2)
