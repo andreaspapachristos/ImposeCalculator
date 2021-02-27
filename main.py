@@ -217,7 +217,7 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "Height"))
         self.lineEdit_2.setToolTip(_translate("MainWindow", "<html><head/><body><p>Height of imposed page</p></body></html>"))
         self.lineEdit_2.setPlaceholderText(_translate("MainWindow", "280"))
-        self.checkBox.setText(_translate("MainWindow", "Monofyllo"))
+        self.checkBox.setText(_translate("MainWindow", "Single Page"))
         self.pushButton.setText(_translate("MainWindow", "Calculate"))
         self.groupBox_4.setToolTip(_translate("MainWindow", "<html><head/><body><p>Results</p></body></html>"))
         self.groupBox_4.setTitle(_translate("MainWindow", "Montaz"))
