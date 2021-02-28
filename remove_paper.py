@@ -11,34 +11,26 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Form(object):
-    def setupUi(self, Form):
-        Form.setObjectName("Form")
-        Form.resize(400, 300)
-        self.verticalLayout = QtWidgets.QVBoxLayout(Form)
+class Ui_Dialog(object):
+    def setupUi(self, Dialog):
+        Dialog.setObjectName("Dialog")
+        Dialog.resize(190, 207)
+        self.verticalLayout = QtWidgets.QVBoxLayout(Dialog)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.textBrowser = QtWidgets.QTextBrowser(Form)
-        self.textBrowser.setObjectName("textBrowser")
-        self.verticalLayout.addWidget(self.textBrowser)
-        self.groupBox = QtWidgets.QGroupBox(Form)
-        self.groupBox.setTitle("")
-        self.groupBox.setObjectName("groupBox")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.groupBox)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.pushButton = QtWidgets.QPushButton(self.groupBox)
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout.addWidget(self.pushButton)
-        self.pushButton_2 = QtWidgets.QPushButton(self.groupBox)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.horizontalLayout.addWidget(self.pushButton_2)
-        self.verticalLayout.addWidget(self.groupBox)
+        self.textEdit = QtWidgets.QTextEdit(Dialog)
+        self.textEdit.setObjectName("textEdit")
+        self.verticalLayout.addWidget(self.textEdit)
+        self.buttonBox = QtWidgets.QDialogButtonBox(Dialog)
+        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
+        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
+        self.buttonBox.setObjectName("buttonBox")
+        self.verticalLayout.addWidget(self.buttonBox)
 
-        self.retranslateUi(Form)
-        self.pushButton_2.clicked.connect(Form.close)
-        QtCore.QMetaObject.connectSlotsByName(Form)
+        self.retranslateUi(Dialog)
+        self.buttonBox.accepted.connect(Dialog.accept)
+        self.buttonBox.rejected.connect(Dialog.reject)
+        QtCore.QMetaObject.connectSlotsByName(Dialog)
 
-    def retranslateUi(self, Form):
+    def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
-        self.pushButton.setText(_translate("Form", "ok"))
-        self.pushButton_2.setText(_translate("Form", "cancel"))
+        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
