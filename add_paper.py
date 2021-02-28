@@ -58,6 +58,7 @@ class Ui_Form(object):
         self.verticalLayout.addWidget(self.pushButton)
 
         self.retranslateUi(Form)
+        self.pushButton_2.clicked.connect(self.addPaper)
         self.pushButton.clicked.connect(Form.close)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
@@ -69,4 +70,18 @@ class Ui_Form(object):
         self.label_3.setText(_translate("Form", "New Paper"))
         self.pushButton_2.setText(_translate("Form", "Ok"))
         self.pushButton.setText(_translate("Form", "Cancel"))
+        self.lineEdit.setValidator(QtGui.QIntValidator())
+        self.lineEdit.setPlaceholderText(_translate("Form", "250"))
+        self.lineEdit_2.setValidator(QtGui.QIntValidator())
+        self.lineEdit_2.setPlaceholderText(_translate("Form", "350"))
+
+    def addPaper(self):
+        width = int(self.lineEdit.text())
+        height = int(self.lineEdit_2.text())
+        if width < height:
+            return "%sX%s" % (width, height)
+        else:
+            return "%sX%s" % (height, width)
+
+
 
