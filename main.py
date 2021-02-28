@@ -9,7 +9,7 @@
 
 import diastaseis, sys
 from view import *
-
+import remove_paper, add_paper
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -204,6 +204,8 @@ class Ui_MainWindow(object):
         self.checkBox_4.clicked.connect(self.checkBox_3.toggle)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         self.pushButton.clicked.connect(self.calc)
+        self.toolButton.clicked.connect(self.addPaper)
+        self.toolButton_2.clicked.connect(self.removePaper)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -302,6 +304,24 @@ class Ui_MainWindow(object):
             self.window = QtWidgets.QMainWindow()
             self.ui = Ui_MainWindow1(self.window, [result[1][1], result[1][0]], page, result[3], monofyllo)
             self.window.show()
+
+    def addPaper(self):
+        self.papers = []
+        for i in range(self.comboBox.count()):
+            self.papers.append([int(self.comboBox.itemText(i).split('x', 1)[j]) for j in range(2)])
+        self.Form = QtWidgets.QWidget()
+        self.ui = add_paper.Ui_Form()
+        self.ui.setupUi(self.Form)
+        self.Form.show()
+
+    def removePaper(self):
+        self.papers = []
+        for i in range(self.comboBox.count()):
+            self.papers.append([int(self.comboBox.itemText(i).split('x', 1)[j]) for j in range(2)])
+        self.Form = QtWidgets.QWidget()
+        self.ui = remove_paper.Ui_Form()
+        self.ui.setupUi(self.Form)
+        self.Form.show()
 
 
 if __name__ == "__main__":

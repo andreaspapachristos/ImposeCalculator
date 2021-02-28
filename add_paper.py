@@ -69,3 +69,4 @@ class Ui_Form(object):
         self.label_3.setText(_translate("Form", "New Paper"))
         self.pushButton_2.setText(_translate("Form", "Ok"))
         self.pushButton.setText(_translate("Form", "Cancel"))
+
