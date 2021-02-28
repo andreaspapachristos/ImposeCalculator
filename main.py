@@ -205,6 +205,7 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         self.pushButton.clicked.connect(self.calc)
 
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -302,6 +303,7 @@ class Ui_MainWindow(object):
             self.window = QtWidgets.QMainWindow()
             self.ui = Ui_MainWindow1(self.window, [result[1][1], result[1][0]], page, result[3], monofyllo)
             self.window.show()
+
 
 
 if __name__ == "__main__":
