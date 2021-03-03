@@ -321,7 +321,7 @@ class Ui_MainWindow(object):
 
         self.Dialog.show()
         if self.Dialog.exec_():
-            self.comboBox.addItem(self.ui.accept()[0] + "x" + self.ui.accept()[1])
+            self.comboBox.addItem(self.ui.accept()[1] + "x" + self.ui.accept()[0])
 
         #return
 
