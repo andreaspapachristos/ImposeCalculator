@@ -9,12 +9,14 @@
 
 import diastaseis, sys
 from view import *
-
+import remove_paper, add_paper
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_MainWindow(object):
+    papers = ["610x860", "640x880", "700x1000"]
     def setupUi(self, MainWindow):
+
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(200, 595)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -135,10 +137,12 @@ class Ui_MainWindow(object):
         self.gridLayout_4.addWidget(self.label_7, 0, 0, 1, 3)
         self.comboBox = QtWidgets.QComboBox(self.groupBox_6)
         self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
+        for i in range(0, self.papers.__len__()):
+            self.comboBox.addItem("")
+        #self.comboBox.addItem("")
+        #self.comboBox.addItem("")
+        #self.comboBox.addItem("")
+        #self.comboBox.addItem("")
         # self.comboBox.addItem("")
         self.gridLayout_4.addWidget(self.comboBox, 0, 3, 1, 2)
         self.groupBox_7 = QtWidgets.QGroupBox(self.groupBox_6)
@@ -204,9 +208,10 @@ class Ui_MainWindow(object):
         self.checkBox_4.clicked.connect(self.checkBox_3.toggle)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         self.pushButton.clicked.connect(self.calc)
-
+        self.toolButton.clicked.connect(self.addPaper)
 
     def retranslateUi(self, MainWindow):
+        #papers = ["610x860", "640x880", "700x1000"]
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.groupBox_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>Page to be imposed</p></body></html>"))
@@ -240,10 +245,12 @@ class Ui_MainWindow(object):
         self.lineEdit_7.setPlaceholderText(_translate("MainWindow", "3"))
         self.lineEdit_8.setPlaceholderText(_translate("MainWindow", "10"))
         # self.comboBox.setItemText(0, _translate("MainWindow", "ALL"))
-        self.comboBox.setItemText(0, _translate("MainWindow", "580x860"))
-        self.comboBox.setItemText(1, _translate("MainWindow", "610x860"))
-        self.comboBox.setItemText(2, _translate("MainWindow", "640x880"))
-        self.comboBox.setItemText(3, _translate("MainWindow", "700x1000"))
+        for i in range(0, self.papers.__len__()):
+            self.comboBox.setItemText(i,_translate("MainWindow", self.papers[i]))
+        #self.comboBox.setItemText(0, _translate("MainWindow", "580x860"))
+        #self.comboBox.setItemText(1, _translate("MainWindow", "610x860"))
+        #self.comboBox.setItemText(2, _translate("MainWindow", "640x880"))
+        #self.comboBox.setItemText(3, _translate("MainWindow", "700x1000"))
         self.toolButton.setText(_translate("MainWindow", "..."))
         self.toolButton_2.setText(_translate("MainWindow", "..."))
         self.toolButton_3.setText(_translate("MainWindow", "..."))
@@ -304,9 +311,26 @@ class Ui_MainWindow(object):
             self.ui = Ui_MainWindow1(self.window, [result[1][1], result[1][0]], page, result[3], monofyllo)
             self.window.show()
 
+    def addPaper(self):
+        #papers = ["610x860", "640x880", "700x1000"]
+        self.Dialog = QtWidgets.QDialog()
+        self.ui = add_paper.Ui_Dialog()
+        self.ui.setupUi(self.Dialog)
+        #self.papers.append("%sx%s" % (self.ui.lineEdit.text(),  self.ui.lineEdit_2.text()))
+        #print(("%sx%s" % (self.ui.lineEdit.text(),  self.ui.lineEdit_2.text())))
+
+        self.Dialog.show()
+        if self.Dialog.exec_():
+            self.comboBox.addItem(self.ui.accept()[0] + "x" + self.ui.accept()[1])
+
+        #return
+
+
+
 
 
 if __name__ == "__main__":
+    #papers = ["610x860", "640x880", "700x1000"]
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()

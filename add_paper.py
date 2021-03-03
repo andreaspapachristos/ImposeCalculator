@@ -51,9 +51,21 @@ class Ui_Dialog(object):
         self.buttonBox.accepted.connect(Dialog.accept)
         self.buttonBox.rejected.connect(Dialog.reject)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-
+        self.lineEdit.setValidator(QtGui.QIntValidator())
+        self.lineEdit_2.setValidator(QtGui.QIntValidator())
+        #self.buttonBox.accepted.connect(self.dimension())
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.label.setText(_translate("Dialog", "width"))
         self.label_2.setText(_translate("Dialog", "height"))
+
+    def accept(self):
+
+        #self.accept = "%sx%s" % (self.lineEdit.text(), self.lineEdit_2.text())
+        print(self.lineEdit.text(), self.lineEdit_2.text())
+
+        return self.lineEdit.text(), self.lineEdit_2.text()
+
+
+
