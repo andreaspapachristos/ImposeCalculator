@@ -209,7 +209,7 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         self.pushButton.clicked.connect(self.calc)
         self.toolButton.clicked.connect(self.addPaper)
-
+        self.toolButton_3.clicked.connect(self.removePaper)
     def retranslateUi(self, MainWindow):
         #papers = ["610x860", "640x880", "700x1000"]
         _translate = QtCore.QCoreApplication.translate
@@ -325,7 +325,16 @@ class Ui_MainWindow(object):
 
         #return
 
-
+    def removePaper(self):
+        self.Dialog = QtWidgets.QDialog()
+        self.ui = remove_paper.Ui_Dialog()
+        self.ui.setupUi(self.Dialog)
+        self.Dialog.show()
+        model = QtGui.QStandardItemModel()
+        self.ui.listView.setModel(model)
+        for i in self.papers:
+            item = QtGui.QStandardItem(i)
+            model.appendRow(item)
 
 
 
