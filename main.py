@@ -209,7 +209,7 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         self.pushButton.clicked.connect(self.calc)
         self.toolButton.clicked.connect(self.addPaper)
-
+        self.toolButton_3.clicked.connect(self.removePaper)
     def retranslateUi(self, MainWindow):
         #papers = ["610x860", "640x880", "700x1000"]
         _translate = QtCore.QCoreApplication.translate
@@ -321,12 +321,27 @@ class Ui_MainWindow(object):
 
         self.Dialog.show()
         if self.Dialog.exec_():
-            self.comboBox.addItem(self.ui.accept()[0] + "x" + self.ui.accept()[1])
-
+            self.comboBox.addItem(self.ui.accept()[1] + "x" + self.ui.accept()[0])
+            self.papers.append(self.ui.accept()[1] + "x" + self.ui.accept()[0])
+            self.comboBox.update()
         #return
 
+    def removePaper(self):
+        self.Dialog = QtWidgets.QDialog()
+        self.ui = remove_paper.Ui_Dialog()
+        self.ui.setupUi(self.Dialog)
+        self.Dialog.show()
+        model = QtGui.QStandardItemModel()
 
-
+        for i in self.papers:
+            item = QtWidgets.QListWidgetItem(i)
+            self.ui.listWidget.addItem(item)
+            #model.appendRow(item)
+        if self.Dialog.exec_():
+            index = self.ui.listWidget.currentRow()
+            #self.ui.listWidget.clear()
+            self.papers.pop(index)
+            self.comboBox.removeItem(index)
 
 
 if __name__ == "__main__":
