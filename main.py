@@ -284,10 +284,15 @@ class Ui_MainWindow(object):
         else:
             for i in range(self.comboBox.count()):
                 papers.append([int(self.comboBox.itemText(i).split('x', 1)[j]) for j in range(2)])
-        width = int(self.lineEdit.text())
-        height = int(self.lineEdit_2.text())
+        try:
+            width = int(self.lineEdit.text())
+            height = int(self.lineEdit_2.text())
         # print(len(papers))
-        page = [width, height]
+            page = [width, height]
+        except ValueError:
+            print("no page has given use the default")
+            page = [210,280]
+            pass
         monofyllo = self.checkBox.isChecked()
         print(monofyllo)
         if self.lineEdit_7.text():
