@@ -156,16 +156,11 @@ class Ui_MainWindow(object):
         self.toolButton.setIcon(icon)
         self.toolButton.setObjectName("toolButton")
         self.gridLayout_6.addWidget(self.toolButton, 0, 0, 1, 1)
-        self.toolButton_2 = QtWidgets.QToolButton(self.groupBox_7)
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("img/pencil.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.toolButton_2.setIcon(icon1)
-        self.toolButton_2.setObjectName("toolButton_2")
-        self.gridLayout_6.addWidget(self.toolButton_2, 0, 1, 1, 1)
+
         self.toolButton_3 = QtWidgets.QToolButton(self.groupBox_7)
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("img/gem_okay.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.toolButton_3.setIcon(icon2)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("img/minus-circle.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.toolButton_3.setIcon(icon1)
         self.toolButton_3.setObjectName("toolButton_3")
         self.gridLayout_6.addWidget(self.toolButton_3, 0, 2, 1, 1)
         self.gridLayout_4.addWidget(self.groupBox_7, 7, 0, 1, 5)
@@ -252,7 +247,7 @@ class Ui_MainWindow(object):
         #self.comboBox.setItemText(2, _translate("MainWindow", "640x880"))
         #self.comboBox.setItemText(3, _translate("MainWindow", "700x1000"))
         self.toolButton.setText(_translate("MainWindow", "..."))
-        self.toolButton_2.setText(_translate("MainWindow", "..."))
+        #self.toolButton_2.setText(_translate("MainWindow", "..."))
         self.toolButton_3.setText(_translate("MainWindow", "..."))
         self.groupBox_8.setTitle(_translate("MainWindow", "Units"))
         self.checkBox_3.setText(_translate("MainWindow", "milimeters"))
@@ -284,10 +279,15 @@ class Ui_MainWindow(object):
         else:
             for i in range(self.comboBox.count()):
                 papers.append([int(self.comboBox.itemText(i).split('x', 1)[j]) for j in range(2)])
-        width = int(self.lineEdit.text())
-        height = int(self.lineEdit_2.text())
+        try:
+            width = int(self.lineEdit.text())
+            height = int(self.lineEdit_2.text())
         # print(len(papers))
-        page = [width, height]
+            page = [width, height]
+        except ValueError:
+            print("no page has given use the default")
+            page = [210,280]
+            pass
         monofyllo = self.checkBox.isChecked()
         print(monofyllo)
         if self.lineEdit_7.text():
