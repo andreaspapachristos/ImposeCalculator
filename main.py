@@ -274,42 +274,46 @@ class Ui_MainWindow(object):
     def calc(self):
 
         papers = []
-        if self.checkBox_2.isChecked():
-            papers.append([int(self.comboBox.currentText().split('x', 1)[j]) for j in range(2)])
-        else:
-            for i in range(self.comboBox.count()):
-                papers.append([int(self.comboBox.itemText(i).split('x', 1)[j]) for j in range(2)])
         try:
-            width = int(self.lineEdit.text())
-            height = int(self.lineEdit_2.text())
-        # print(len(papers))
-            page = [width, height]
-        except ValueError:
-            print("no page has given use the default")
-            page = [210,280]
             pass
-        monofyllo = self.checkBox.isChecked()
-        print(monofyllo)
-        if self.lineEdit_7.text():
-            bleed = int(self.lineEdit_7.text())
-        else:
-            bleed = int(self.lineEdit_7.placeholderText())
-        if self.lineEdit_8.text():
-            gap = int(self.lineEdit_8.text())
-        else:
-            gap = int(self.lineEdit_8.placeholderText())
+            if self.checkBox_2.isChecked():
+                papers.append([int(self.comboBox.currentText().split('x', 1)[j]) for j in range(2)])
+            else:
+                for i in range(self.comboBox.count()):
+                    papers.append([int(self.comboBox.itemText(i).split('x', 1)[j]) for j in range(2)])
+            try:
+                width = int(self.lineEdit.text())
+                height = int(self.lineEdit_2.text())
+            # print(len(papers))
+                page = [width, height]
+            except ValueError:
+                print("no page has given use the default")
+                page = [210,280]
+                pass
+            monofyllo = self.checkBox.isChecked()
+            print(monofyllo)
+            if self.lineEdit_7.text():
+                bleed = int(self.lineEdit_7.text())
+            else:
+                bleed = int(self.lineEdit_7.placeholderText())
+            if self.lineEdit_8.text():
+                gap = int(self.lineEdit_8.text())
+            else:
+                gap = int(self.lineEdit_8.placeholderText())
 
-        result = diastaseis.betterUse(papers, page, monofyllo, bleed, gap)
+            result = diastaseis.betterUse(papers, page, monofyllo, bleed, gap)
 
-        self.lineEdit_3.setText(QtCore.QCoreApplication.translate("MainWindow", str(result[1][1])))
-        self.lineEdit_4.setText(QtCore.QCoreApplication.translate("MainWindow", str(result[1][0])))
-        self.lineEdit_5.setText(QtCore.QCoreApplication.translate("MainWindow", result[0]))
-        self.lineEdit_6.setText(QtCore.QCoreApplication.translate("MainWindow", str(result[2])))
+            self.lineEdit_3.setText(QtCore.QCoreApplication.translate("MainWindow", str(result[1][1])))
+            self.lineEdit_4.setText(QtCore.QCoreApplication.translate("MainWindow", str(result[1][0])))
+            self.lineEdit_5.setText(QtCore.QCoreApplication.translate("MainWindow", result[0]))
+            self.lineEdit_6.setText(QtCore.QCoreApplication.translate("MainWindow", str(result[2])))
 
-        if self.checkBox_5.isChecked():
-            self.window = QtWidgets.QMainWindow()
-            self.ui = Ui_MainWindow1(self.window, [result[1][1], result[1][0]], page, result[3], monofyllo)
-            self.window.show()
+            if self.checkBox_5.isChecked():
+                self.window = QtWidgets.QMainWindow()
+                self.ui = Ui_MainWindow1(self.window, [result[1][1], result[1][0]], page, result[3], monofyllo)
+                self.window.show()
+        except :
+            pass
 
     def addPaper(self):
         #papers = ["610x860", "640x880", "700x1000"]
