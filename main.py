@@ -1,5 +1,19 @@
 # -*- coding: utf-8 -*-
+'''''
+Copyright [2021] [Andreas Papachristos]
 
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+'''''
 # Form implementation generated from reading ui file 'main.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.1
@@ -210,7 +224,7 @@ class Ui_MainWindow(object):
         self.toolButton.clicked.connect(self.addPaper)
         self.toolButton_3.clicked.connect(self.removePaper)
     def retranslateUi(self, MainWindow):
-        #papers = ["610x860", "640x880", "700x1000"]
+
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.groupBox_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>Page to be imposed</p></body></html>"))
@@ -319,7 +333,6 @@ class Ui_MainWindow(object):
             pass
 
     def addPaper(self):
-        #papers = ["610x860", "640x880", "700x1000"]
         self.Dialog = QtWidgets.QDialog()
         self.ui = add_paper.Ui_Dialog()
         self.ui.setupUi(self.Dialog)
@@ -352,7 +365,7 @@ class Ui_MainWindow(object):
 
 
 if __name__ == "__main__":
-    #papers = ["610x860", "640x880", "700x1000"]
+
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
