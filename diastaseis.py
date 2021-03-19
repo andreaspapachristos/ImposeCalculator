@@ -1,28 +1,19 @@
 # from itertools import chain
+'''''
+Copyright [2021] [Andreas Papachristos]
 
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
 
-"""""
-def matchPage(width, height):
-    width *= 2
-    list = fixPaper(1000, 700)
-    for i in list:
-        temp = []
-        if width / i[0] < 1 or width / i[1] < 1:
-            if width / i[0] > width / i[1]:
-                if width / i[0] > 1:
-                    temp.append([i[1], i[0]])
-                else:
-                    temp.append([i[0], i[1]])
-            # i[1] = height/i[1]
-            elif width / i[0] < width / i[1]:
-                if width / i[1] > 1:
-                    temp.append([i[0], i[1]])
-                else:
-                    temp.append([i[0], i[1]])
-            # i[1] = height/i[0]
+       http://www.apache.org/licenses/LICENSE-2.0
 
-        print(temp)
-"""
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+'''''
 
 def find4up(diaireteos, dieretis):
     an = (12, 9, 8, 6, 4, 3, 2)
@@ -32,39 +23,6 @@ def find4up(diaireteos, dieretis):
             return i
     return 0
 
-
-""" def dokimi():
-    if ppw/pw > 0 and pph/ph > 0 :
-            if ppw/pw > pph/ph:
-                t = ph
-                ph = pw
-                pw = t
-            v = pw
-            z = 0
-            for i in range(0,9):                            
-                if(v < ppw): 
-                    v += pw
-                    z += 1
-                elif(v > ppw): break
-            print(z)
-            v = ph
-            z = 0 
-            for i in range(0,7):
-                if(v < pph): 
-                    v += ph
-                    z += 1
-                elif(v > pph): break                    
-            print(z)
-
-        elif ppw/pw > 0 and pph/ph < 0:
-            if ppw/ph > 0 :
-                v = ph
-                z = 0
-            for i in range(0,8):                            
-                if(v < ppw):
-                    v += ph
-                    z += 1 
- """
 
 
 def matchMontaz(**kwargs):
@@ -149,8 +107,4 @@ def getScheme(pages):
         print(okto, tessera)
     print(dekaksi//4)
 
-if __name__ == '__main__':
-    # print(find4up(880, 80))
-    # matchMontaz(pagewidth=210, pageHeight=280, paperWidth=860, paperHeight=610, monofyllo=False)
-     betterUse([[610,860],[880,640],[1000,700]], [340, 480], False, bleed=3, gap=10)
-    #getScheme(132)
+

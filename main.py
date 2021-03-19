@@ -1,5 +1,19 @@
 # -*- coding: utf-8 -*-
+'''''
+Copyright [2021] [Andreas Papachristos]
 
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+'''''
 # Form implementation generated from reading ui file 'main.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.1
@@ -73,6 +87,7 @@ class Ui_MainWindow(object):
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.lineEdit_3 = QtWidgets.QLineEdit(self.groupBox_2)
         self.lineEdit_3.setStyleSheet("background-color: rgb(85, 170, 0);")
+        self.lineEdit_3.setReadOnly(True)
         self.lineEdit_3.setObjectName("lineEdit_3")
         self.gridLayout_2.addWidget(self.lineEdit_3, 0, 1, 1, 1)
         self.label_4 = QtWidgets.QLabel(self.groupBox_2)
@@ -83,6 +98,7 @@ class Ui_MainWindow(object):
         self.gridLayout_2.addWidget(self.label_3, 0, 0, 1, 1)
         self.lineEdit_4 = QtWidgets.QLineEdit(self.groupBox_2)
         self.lineEdit_4.setStyleSheet("background-color: rgb(85, 170, 0);")
+        self.lineEdit_4.setReadOnly(True)
         self.lineEdit_4.setObjectName("lineEdit_4")
         self.gridLayout_2.addWidget(self.lineEdit_4, 1, 1, 1, 1)
         self.verticalLayout_2.addWidget(self.splitter)
@@ -96,6 +112,7 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addWidget(self.label_5, 0, 0, 1, 1)
         self.lineEdit_6 = QtWidgets.QLineEdit(self.groupBox_5)
         self.lineEdit_6.setStyleSheet("background-color: rgb(85, 170, 0);")
+        self.lineEdit_6.setReadOnly(True)
         self.lineEdit_6.setObjectName("lineEdit_6")
         self.gridLayout_3.addWidget(self.lineEdit_6, 0, 1, 1, 1)
         self.label_6 = QtWidgets.QLabel(self.groupBox_5)
@@ -103,6 +120,7 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addWidget(self.label_6, 1, 0, 1, 1)
         self.lineEdit_5 = QtWidgets.QLineEdit(self.groupBox_5)
         self.lineEdit_5.setStyleSheet("background-color: rgb(85, 170, 0);")
+        self.lineEdit_5.setReadOnly(True)
         self.lineEdit_5.setObjectName("lineEdit_5")
         self.gridLayout_3.addWidget(self.lineEdit_5, 1, 1, 1, 1)
         self.verticalLayout_2.addWidget(self.groupBox_5)
@@ -206,7 +224,7 @@ class Ui_MainWindow(object):
         self.toolButton.clicked.connect(self.addPaper)
         self.toolButton_3.clicked.connect(self.removePaper)
     def retranslateUi(self, MainWindow):
-        #papers = ["610x860", "640x880", "700x1000"]
+
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.groupBox_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>Page to be imposed</p></body></html>"))
@@ -307,7 +325,6 @@ class Ui_MainWindow(object):
             self.lineEdit_4.setText(QtCore.QCoreApplication.translate("MainWindow", str(result[1][0])))
             self.lineEdit_5.setText(QtCore.QCoreApplication.translate("MainWindow", result[0]))
             self.lineEdit_6.setText(QtCore.QCoreApplication.translate("MainWindow", str(result[2])))
-
             if self.checkBox_5.isChecked():
                 self.window = QtWidgets.QMainWindow()
                 self.ui = Ui_MainWindow1(self.window, [result[1][1], result[1][0]], page, result[3], monofyllo)
@@ -316,7 +333,6 @@ class Ui_MainWindow(object):
             pass
 
     def addPaper(self):
-        #papers = ["610x860", "640x880", "700x1000"]
         self.Dialog = QtWidgets.QDialog()
         self.ui = add_paper.Ui_Dialog()
         self.ui.setupUi(self.Dialog)
@@ -349,7 +365,7 @@ class Ui_MainWindow(object):
 
 
 if __name__ == "__main__":
-    #papers = ["610x860", "640x880", "700x1000"]
+
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
