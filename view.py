@@ -129,11 +129,4 @@ class Ui_MainWindow1(object):
                     # hgap += page[0]
                     n += x + hgap
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow1(MainWindow, [960, 650], [110, 100], [4, 6, 0], False)
-    #ui.setup(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
+
