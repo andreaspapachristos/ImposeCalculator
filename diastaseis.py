@@ -1,6 +1,6 @@
 # from itertools import chain
 '''''
-Copyright [2021] [Andreas Papachristos]
+Copyright 2021 Andreas Papachristos
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
