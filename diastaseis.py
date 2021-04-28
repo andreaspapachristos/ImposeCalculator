@@ -44,7 +44,7 @@ def matchMontaz(**kwargs):
 
     temp = []
     if kwargs.get('monofyllo', True):
-        pw = kwargs.get('pagewidth') + bleed #kwargs.get('bleed') * 2
+        pw = kwargs.get('pagewidth') + bleed//2 #kwargs.get('bleed') * 2
         if (kwargs.get('paperHeight') < kwargs.get('paperWidth')):
             ppw = kwargs.get('paperWidth')
         else:
