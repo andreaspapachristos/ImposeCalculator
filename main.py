@@ -32,6 +32,12 @@ from view import *
 
 class Ui_MainWindow(object):
     papers = ["610x860", "640x880", "700x1000"]
+
+    def __init__(self):
+        self.window = None
+        self.ui = None
+        self.Dialog = None
+
     def setupUi(self, MainWindow):
 
         MainWindow.setObjectName("MainWindow")
