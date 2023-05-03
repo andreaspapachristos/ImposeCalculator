@@ -112,10 +112,12 @@ class Ui_MainWindow1(object):
                 for p in range(0, paper[0] * 2):
                    # vgap = (MainWindow.geometry().height() - page[1] * paper[1]) // (paper[0] + 1)
                     z = vgap
+
                     # print(page[1] * paper[1])
                     for m in range(0, paper[1]):
                        # painter.drawRect(int(hgap), int(vgap), int(page[0]), int(page[1]))
                        painter.drawRect(int(n), int(z), int(x), int(y))
+
                         #vgap += vgap + page[1]
                        z += vgap + y
                     if (p + 1) % 2 == 0:
@@ -133,6 +135,7 @@ class Ui_MainWindow1(object):
                     for m in range(0, paper[1] * 2):
                         # painter.drawRect(int(hgap), int(vgap), int(page[0]), int(page[1]))
                         painter.drawRect(int(n), int(z), int(x), int(y))
+
                         # vgap += vgap + page[1]
                         z +=  y
                         #n += x + hgap
