@@ -216,6 +216,7 @@ class Ui_MainWindow(object):
         self.checkBox_5 = QtWidgets.QCheckBox(self.groupBox_9)
         self.checkBox_5.setGeometry(QtCore.QRect(0, 30, 111, 190))
         self.checkBox_5.setObjectName("checkBox_5")
+        self.checkBox_5.setChecked(True)
         self.tabWidget.addTab(self.tab_2, "")
         self.horizontalLayout.addWidget(self.tabWidget)
         MainWindow.setCentralWidget(self.centralwidget)
