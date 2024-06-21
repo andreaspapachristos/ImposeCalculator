@@ -79,8 +79,8 @@ class Ui_MainWindow1(object):
         pen.setWidth(1)
         pen.setColor(QtGui.QColor("#EB5160"))
         painter.setPen(pen)
-        painter.drawText((MainWindow.geometry().width())/2, 10, str(MainWindow.geometry().width()))
-        painter.drawText(10, (MainWindow.geometry().height())/2, str(MainWindow.geometry().height()))
+        painter.drawText(int((MainWindow.geometry().width())/2), 10, str(MainWindow.geometry().width()))
+        painter.drawText(10,int( (MainWindow.geometry().height())/2), str(MainWindow.geometry().height()))
         #z =
         #
         if paper[2] == 0:

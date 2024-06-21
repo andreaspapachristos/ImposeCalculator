@@ -338,8 +338,9 @@ class Ui_MainWindow(object):
                 self.window = QtWidgets.QMainWindow()
                 self.ui = Ui_MainWindow1(self.window, [result[1][1], result[1][0]], page, result[3], monofyllo)
                 self.window.show()
-        except :
-            pass
+        except Exception as X :
+            print(X)
+            #pass
 
     def addPaper(self):
         self.Dialog = QtWidgets.QDialog()
