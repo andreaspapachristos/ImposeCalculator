@@ -59,7 +59,7 @@ class Ui_MainWindow1(object):
         self.label = None
         self.verticalLayout = None
         self.centralwidget = None   
-        self.MainWindow = None   #Python 3.12 for some reason requires initialization, but works fine in python 3.11
+        self.MainWindow = MainWindow   #Python 3.12 for some reason requires initialization, but works fine in python 3.11 without
         MainWindow.resize(size[0], size[1])
         self.page = page
         self.paper = paper
