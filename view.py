@@ -81,9 +81,9 @@ class Ui_MainWindow1(object):
         pen.setColor(QtGui.QColor("#EB5160"))
         painter.setPen(pen)
         painter.drawText(int((MainWindow.geometry().width())/2), 10, str(MainWindow.geometry().width()))
-        painter.rotate(90)
-        painter.drawText(int((MainWindow.geometry().height())/2), 0, str(MainWindow.geometry().height()))
-        painter.rotate(-90)
+        painter.rotate(270)
+        painter.drawText(int(-((MainWindow.geometry().height())/2)), 10, str(MainWindow.geometry().height()))
+        painter.rotate(-270)
        # painter.drawText(10, int( (MainWindow.geometry().height())/2),  str(MainWindow.geometry().height()))    
         #z =
         #
