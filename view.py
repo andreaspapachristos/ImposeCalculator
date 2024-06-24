@@ -90,15 +90,15 @@ class Ui_MainWindow1(object):
         if paper[2] == 0:
             x = page[0]
             y = page[1]
-            hgap = (MainWindow.geometry().width() - x * paper[0] * self.spreads(monofyllo)) // ((paper[0] * self.spreads(monofyllo)) + 1)
-            vgap = (MainWindow.geometry().height() - y * paper[1]) // (paper[1] + 1)
+            hgap = (MainWindow.geometry().width() - x * paper[0] * self.spreads(monofyllo)) // ((paper[0] * self.spreads(monofyllo)) +1)
+            vgap = (MainWindow.geometry().height() - y * paper[1]) // (paper[1] + 2)
 
 
         else:
             x = page[1]
             y = page[0]
-            hgap= (MainWindow.geometry().width() - x * paper[0])//((paper[0] ) + 1)
-            vgap = (MainWindow.geometry().height() - y * paper[1]*self.spreads(monofyllo)) // (paper[1]* self.spreads(monofyllo) + 1)
+            hgap= (MainWindow.geometry().width() - x * paper[0])//((paper[0] ) +1)
+            vgap = (MainWindow.geometry().height() - y * paper[1]*self.spreads(monofyllo)) // (paper[1]* self.spreads(monofyllo) +2 )
 
         n = hgap
         if monofyllo:
