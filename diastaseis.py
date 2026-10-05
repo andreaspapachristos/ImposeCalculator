@@ -99,12 +99,21 @@ def betterUse(papers, page, monofyllo, bleed, gap):
 
 
 def getScheme(pages):
-    dekaksi = pages // 4
-    n = dekaksi % 4
-    if (n):
-        okto = n // 2
-        tessera = n % 2
-        print(okto, tessera)
-    print(dekaksi//4)
+    sixteen = pages // 16
+    remainder = pages % 16
+
+    eight = remainder // 8
+    remainder = remainder % 8
+
+    four = remainder // 4
+    remainder = remainder % 4
+
+    if remainder:
+        raise ValueError(
+            f"Σφάλμα: περισσεύουν {remainder} σελίδες "
+            "και δεν μπορούν να βιβλιοδετηθούν."
+        )
+
+    return sixteen, eight, four
 
 
