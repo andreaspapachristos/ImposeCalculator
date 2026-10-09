@@ -12,3 +12,4 @@ Following text in Greek Language: <br />
 βασικά μεγέθη όπως "δόντι" εκτύπωσης και "ξακρίσμα" σελίδας, το οποίο και μπορεί να αλλάξει ο χρήστης. <br />
 Υπολογίζω σύντομα να "εκδόσω" την πρώτη  έκδοση.
 
+[Για μια πρώτη δοκιμή χωρίς να σχεδιάζει το μοντάζ. Just for testing without the scheme editor] (https://calculator.papachristosandreas.gr)
