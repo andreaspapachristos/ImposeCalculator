@@ -115,6 +115,5 @@ def getScheme(pages):
         )
 
     return sixteen, eight, four
-    print(dekaksi//4)
 
 
