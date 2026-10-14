@@ -139,7 +139,7 @@ class Ui_MainWindow1(object):
         painter.end()
 
     def export_to_pdf(self):
-        """Εξάγει το σχέδιο σε PDF με μαύρο πλαίσιο γύρω από το μοντάζ."""
+        """Εξάγει το σχέδιο σε PDF προσαρμοσμένο σε Α4 χωρίς περιττά πλαίσια."""
         file_path, _ = QtWidgets.QFileDialog.getSaveFileName(
             self.MainWindow, 
             "Αποθήκευση σε PDF", 
@@ -188,19 +188,12 @@ class Ui_MainWindow1(object):
                 Qt.SmoothTransformation
             )
             
-            # Σχεδίαση του κλιμακωμένου σχεδίου
             painter.drawPixmap(target_x, target_y, scaled_pixmap)
-
-            # 3. Σχεδίαση μαύρου πλαισίου γύρω από το μοντάζ
-            black_pen = QtGui.QPen(QtGui.QColor("#000000"))
-            black_pen.setWidth(2)  # Πάχος γραμμής (μπορείς να το κάνεις 1 ή 3 αν θες)
-            painter.setPen(black_pen)
-            painter.drawRect(target_x, target_y, scaled_pixmap.width(), scaled_pixmap.height())
 
         painter.end()
         
         QtWidgets.QMessageBox.information(
             self.MainWindow, 
             "Επιτυχία", 
-            f"Το PDF αποθηκεύτηκε επιτυχώς με πλαίσιο στο:\n{file_path}"
+            f"Το PDF αποθηκεύτηκε επιτυχώς στο:\n{file_path}"
         )
