@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-'''''
+'''
 Copyright 2021 Andreas Papachristos
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,38 +13,47 @@ Copyright 2021 Andreas Papachristos
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-'''''
+'''
 
-
+from datetime import datetime
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
-
+from PyQt5.QtPrintSupport import QPrinter
+from PyQt5.QtGui import QPdfWriter
 
 
 class Ui_MainWindow1(object):
     def setup(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        #MainWindow.resize(1000, 700)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+        
+        # Κύριο Vertical Layout
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName("verticalLayout")
+        
+        # Label για το σχέδιο
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.label)
+        
+        # Δημιουργία Κουμπιού για την εξαγωγή σε PDF
+        self.pdf_button = QtWidgets.QPushButton(self.centralwidget)
+        self.pdf_button.setObjectName("pdf_button")
+        self.pdf_button.setText("Εξαγωγή σε PDF")
+        self.pdf_button.clicked.connect(self.export_to_pdf)
+        self.verticalLayout.addWidget(self.pdf_button)
+        
         MainWindow.setCentralWidget(self.centralwidget)
+        
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
-        canvas = QtGui.QPixmap(MainWindow.frameGeometry().width(), MainWindow.frameGeometry().height())
+        
+        # Υπολογισμός κανβά με βάση το νέο ύψος (αφαιρούμε τον χώρο του κουμπιού)
+        canvas = QtGui.QPixmap(MainWindow.frameGeometry().width(), MainWindow.frameGeometry().height() - 70)
         canvas.fill(Qt.white)
         self.label.setPixmap(canvas)
-        #self.drawrect([200, 285], [4, 2])
-       # MainWindow.resize(size[0], size[1])
-       # self.page = page
-        #self.paper = paper
-        #self.landscape = landscape
-        #self.drawrect([page[0], page[1]], [paper[0], paper[1]])
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -59,8 +68,12 @@ class Ui_MainWindow1(object):
         self.label = None
         self.verticalLayout = None
         self.centralwidget = None   
-        self.MainWindow = MainWindow   #Python 3.12 for some reason requires initialization, but works fine in python 3.11 without
-        MainWindow.resize(size[0], size[1])
+        self.pdf_button = None
+        self.MainWindow = MainWindow   
+        
+        # Δίνουμε έξτρα ύψος στο παράθυρο (+70 pixels) για να χωράει άνετα το κουμπί 
+        MainWindow.resize(size[0], size[1] + 70)
+        
         self.page = page
         self.paper = paper
         self.monofyllo = monofyllo
@@ -74,7 +87,6 @@ class Ui_MainWindow1(object):
             return 2
 
     def drawrect(self, MainWindow, page, paper, monofyllo):
-
         painter = QtGui.QPainter(self.label.pixmap())
         pen = QtGui.QPen()
         pen.setWidth(1)
@@ -84,70 +96,111 @@ class Ui_MainWindow1(object):
         painter.rotate(270)
         painter.drawText(int(-((MainWindow.geometry().height())/2)), 10, str(MainWindow.geometry().height()))
         painter.rotate(-270)
-       # painter.drawText(10, int( (MainWindow.geometry().height())/2),  str(MainWindow.geometry().height()))    
-        #z =
-        #
+        
         if paper[2] == 0:
             x = page[0]
             y = page[1]
-            hgap = (MainWindow.geometry().width() - x * paper[0] * self.spreads(monofyllo)) // ((paper[0] * self.spreads(monofyllo)) +1)
+            hgap = (MainWindow.geometry().width() - x * paper[0] * self.spreads(monofyllo)) // ((paper[0] * self.spreads(monofyllo)) + 1)
             vgap = (MainWindow.geometry().height() - y * paper[1]) // (paper[1] + 2)
-
-
         else:
             x = page[1]
             y = page[0]
-            hgap= (MainWindow.geometry().width() - x * paper[0])//((paper[0] ) +1)
-            vgap = (MainWindow.geometry().height() - y * paper[1]*self.spreads(monofyllo)) // (paper[1]* self.spreads(monofyllo) +2 )
+            hgap = (MainWindow.geometry().width() - x * paper[0]) // ((paper[0]) + 1)
+            vgap = (MainWindow.geometry().height() - y * paper[1] * self.spreads(monofyllo)) // (paper[1] * self.spreads(monofyllo) + 2)
 
         n = hgap
         if monofyllo:
             for p in range(0, paper[0]):
                 z = vgap
-
                 for m in range(0, paper[1]):
                     painter.drawRect(int(n), int(z), int(x), int(y))
                     z += vgap + y
                 n += hgap + x
         else:
             if paper[2] == 0:
-
-
                 for p in range(0, paper[0] * 2):
-                   # vgap = (MainWindow.geometry().height() - page[1] * paper[1]) // (paper[0] + 1)
                     z = vgap
-
-                    # print(page[1] * paper[1])
                     for m in range(0, paper[1]):
-                       # painter.drawRect(int(hgap), int(vgap), int(page[0]), int(page[1]))
-                       painter.drawRect(int(n), int(z), int(x), int(y))
-
-                        #vgap += vgap + page[1]
-                       z += vgap + y
+                        painter.drawRect(int(n), int(z), int(x), int(y))
+                        z += vgap + y
                     if (p + 1) % 2 == 0:
-                    # hgap += (MainWindow.geometry().width() - page[0]*paper[0]*2)//(paper[0] + 1)
-                      n += 2*hgap
-                     #print(hgap)
-                #hgap += page[0]
+                        n += 2*hgap
                     n += x
-                    #print(hgap)
             else:
                 for p in range(0, paper[0]):
-                    # vgap = (MainWindow.geometry().height() - page[1] * paper[1]) // (paper[0] + 1)
                     z = vgap
-                    # print(page[1] * paper[1])
                     for m in range(0, paper[1] * 2):
-                        # painter.drawRect(int(hgap), int(vgap), int(page[0]), int(page[1]))
                         painter.drawRect(int(n), int(z), int(x), int(y))
-
-                        # vgap += vgap + page[1]
-                        z +=  y
-                        #n += x + hgap
+                        z += y
                         if (m + 1) % 2 == 0:
-                        # hgap += (MainWindow.geometry().width() - page[0]*paper[0]*2)//(paper[0] + 1)
                             z += 2*vgap
-                        # print(hgap)
-                    # hgap += page[0]
                     n += x + hgap
+        
+        painter.end()
 
+    def export_to_pdf(self):
+        """Εξάγει το σχέδιο σε PDF με μαύρο πλαίσιο γύρω από το μοντάζ."""
+        file_path, _ = QtWidgets.QFileDialog.getSaveFileName(
+            self.MainWindow, 
+            "Αποθήκευση σε PDF", 
+            "scheme_output.pdf", 
+            "PDF Files (*.pdf)"
+        )
+        
+        if not file_path:
+            return  # Αν ο χρήστης ακυρώσει
 
+        writer = QPdfWriter(file_path)
+        writer.setPageSize(QPdfWriter.A4)
+        writer.setResolution(300)
+
+        painter = QtGui.QPainter(writer)
+        
+        page_width = writer.width()
+        page_height = writer.height()
+
+        # 1. Εκτύπωση πληροφοριών στην κορυφή της σελίδας Α4
+        font = QtGui.QFont("Arial", 12)
+        painter.setFont(font)
+        painter.setPen(QtGui.QPen(QtGui.QColor("#222222")))
+
+        current_date = datetime.now().strftime("%d/%m/%Y %H:%M")
+        info_text = (
+            f"Ημερομηνία: {current_date}  |  "
+            f"Διαστάσεις Σελίδας: {self.page[0]}x{self.page[1]}  |  "
+            f"Διαστάσεις Χαρτιού: {self.paper[0]}x{self.paper[1]}"
+        )
+        
+        painter.drawText(150, 200, info_text)
+
+        # 2. Προσαρμογή και κλιμάκωση του σχεδίου (pixmap)
+        pixmap = self.label.pixmap()
+        if pixmap:
+            target_x = 100
+            target_y = 350
+            target_width = page_width - 200
+            target_height = page_height - 500
+
+            scaled_pixmap = pixmap.scaled(
+                target_width, 
+                target_height, 
+                Qt.KeepAspectRatio, 
+                Qt.SmoothTransformation
+            )
+            
+            # Σχεδίαση του κλιμακωμένου σχεδίου
+            painter.drawPixmap(target_x, target_y, scaled_pixmap)
+
+            # 3. Σχεδίαση μαύρου πλαισίου γύρω από το μοντάζ
+            black_pen = QtGui.QPen(QtGui.QColor("#000000"))
+            black_pen.setWidth(2)  # Πάχος γραμμής (μπορείς να το κάνεις 1 ή 3 αν θες)
+            painter.setPen(black_pen)
+            painter.drawRect(target_x, target_y, scaled_pixmap.width(), scaled_pixmap.height())
+
+        painter.end()
+        
+        QtWidgets.QMessageBox.information(
+            self.MainWindow, 
+            "Επιτυχία", 
+            f"Το PDF αποθηκεύτηκε επιτυχώς με πλαίσιο στο:\n{file_path}"
+        )
