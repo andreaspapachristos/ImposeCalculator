@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="img/remove">
+    <file>minus-circle.png</file>
+  </qresource>
+</RCC>

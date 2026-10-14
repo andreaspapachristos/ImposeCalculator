@@ -1,0 +1,129 @@
+# Resource object code (Python 3)
+# Created by: object code
+# Created by: The Resource Compiler for Qt version 5.15.2
+# WARNING! All changes made in this file will be lost!
+
+from PySide2 import QtCore
+
+qt_resource_data = b"\
+\x00\x00\x05\x92\
+\x89\
+PNG\x0d\x0a\x1a\x0a\x00\x00\x00\x0dIHDR\x00\
+\x00\x00\x10\x00\x00\x00\x10\x08\x06\x00\x00\x00\x1f\xf3\xffa\
+\x00\x00\x00\x04sBIT\x08\x08\x08\x08|\x08d\x88\
+\x00\x00\x00\x09pHYs\x00\x00\x0b\x12\x00\x00\x0b\x12\
+\x01\xd2\xdd~\xfc\x00\x00\x00\x1ctEXtSof\
+tware\x00Adobe Fire\
+works CS3\x98\xd6F\x03\x00\x00\x00\
+\x15tEXtCreation Ti\
+me\x002/17/08 \x9c\xaaX\x00\x00\
+\x04\x11tEXtXML:com.ad\
+obe.xmp\x00<?xpacke\
+t begin=\x22   \x22 id\
+=\x22W5M0MpCehiHzre\
+SzNTczkc9d\x22?>\x0a<x\
+:xmpmeta xmlns:x\
+=\x22adobe:ns:meta/\
+\x22 x:xmptk=\x22Adobe\
+ XMP Core 4.1-c0\
+34 46.272976, Sa\
+t Jan 27 2007 22\
+:11:41        \x22>\
+\x0a   <rdf:RDF xml\
+ns:rdf=\x22http://w\
+ww.w3.org/1999/0\
+2/22-rdf-syntax-\
+ns#\x22>\x0a      <rdf\
+:Description rdf\
+:about=\x22\x22\x0a      \
+      xmlns:xap=\
+\x22http://ns.adobe\
+.com/xap/1.0/\x22>\x0a\
+         <xap:Cr\
+eatorTool>Adobe \
+Fireworks CS3</x\
+ap:CreatorTool>\x0a\
+         <xap:Cr\
+eateDate>2008-02\
+-17T02:36:45Z</x\
+ap:CreateDate>\x0a \
+        <xap:Mod\
+ifyDate>2008-03-\
+24T19:00:42Z</xa\
+p:ModifyDate>\x0a  \
+    </rdf:Descri\
+ption>\x0a      <rd\
+f:Description rd\
+f:about=\x22\x22\x0a     \
+       xmlns:dc=\
+\x22http://purl.org\
+/dc/elements/1.1\
+/\x22>\x0a         <dc\
+:format>image/pn\
+g</dc:format>\x0a  \
+    </rdf:Descri\
+ption>\x0a   </rdf:\
+RDF>\x0a</x:xmpmeta\
+>\x0a              \
+                \
+                \
+                \
+                \
+                \
+      \x0a         \
+                \
+                \
+                \
+                \
+                \
+           \x0a    \
+                \
+                \
+                \
+                \
+                \
+       5\x1dRd\x00\x00\x00\xceI\
+DAT8\x8d\xa5\x92\xcd\x0d\xc20\x0c\x85\x9f\xfb\x07\
+B\x0c\xd0\x1d`\x02$6\x80\x9d\xbaS\xd9\x00\x89\x09\
+`\x02.\xdc\xd2C\x0f\x10\x9a\x84C\xcc\x01\xb0\xfb#\
+r\x89e;\x9f\x9e\x9dG\x10NYS\x90\xf2\xb7}\
+\xa0\xef\x5c&5\x02\xc0y\xf7\xc9X\x1f~\xde\xf6\x03\
+L\xa7UF\x02\x1a\xf7'`\xb4\x02maFP \
+\xf5RYS\xa86\x22\x03\x9e\xd3\x89\xbc?T'\x8a\
+#hr\x9d\x8fw\x9a\xc8u\x80w \xc9\x05\x00\xc7\
+\xf94\x1d\x004\x9a\x82'\x03r\x1d@\xda\x12\xb7\xab\
+\x00oc\x9c\x14\xc0\xf1\xa2\x18I\xb2gYS0\x0e\
+ \x06\x04\x1ea\x92\x95M\x07d6\xf6w\xb9\xfcK\
+\x83\x809+\xb8\xcf\xd4\xf7\xfdV^>b\xdc.\x80\
+b*\xa0\xb8\x12\xec;n\x15'\x01x\x01\x9cJE\
+\x9f\x949n\xea\x00\x00\x00\x00IEND\xaeB`\
+\x82\
+"
+
+qt_resource_name = b"\
+\x00\x03\
+\x00\x00g\xa4\
+\x00a\
+\x00d\x00d\
+\x00\x07\
+\x07\xa7W\x87\
+\x00a\
+\x00d\x00d\x00.\x00p\x00n\x00g\
+"
+
+qt_resource_struct = b"\
+\x00\x00\x00\x00\x00\x02\x00\x00\x00\x01\x00\x00\x00\x01\
+\x00\x00\x00\x00\x00\x00\x00\x00\
+\x00\x00\x00\x00\x00\x02\x00\x00\x00\x01\x00\x00\x00\x02\
+\x00\x00\x00\x00\x00\x00\x00\x00\
+\x00\x00\x00\x0c\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\
+\x00\x00\x01w\xc1\x16>\xa0\
+"
+
+def qInitResources():
+    QtCore.qRegisterResourceData(0x03, qt_resource_struct, qt_resource_name, qt_resource_data)
+
+def qCleanupResources():
+    QtCore.qUnregisterResourceData(0x03, qt_resource_struct, qt_resource_name, qt_resource_data)
+
+qInitResources()

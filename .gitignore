@@ -1,0 +1,6 @@
+/venv/
+/.idea/
+/main_.py
+schme.py
+pngTrans.py
+*.md
