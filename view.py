@@ -94,7 +94,8 @@ class Ui_MainWindow1(object):
         painter.setPen(pen)
         painter.drawText(int((MainWindow.geometry().width())/2), 10, str(MainWindow.geometry().width()))
         painter.rotate(270)
-        painter.drawText(int(-((MainWindow.geometry().height())/2)), 10, str(MainWindow.geometry().height()))
+        real_height = MainWindow.geometry().height() - 70
+        painter.drawText(int(-((MainWindow.geometry().height())/2))+20, 10, str(real_height))
         painter.rotate(-270)
         
         if paper[2] == 0:
@@ -111,7 +112,7 @@ class Ui_MainWindow1(object):
         n = hgap
         if monofyllo:
             for p in range(0, paper[0]):
-                z = vgap
+                z = vgap -20
                 for m in range(0, paper[1]):
                     painter.drawRect(int(n), int(z), int(x), int(y))
                     z += vgap + y
@@ -119,7 +120,7 @@ class Ui_MainWindow1(object):
         else:
             if paper[2] == 0:
                 for p in range(0, paper[0] * 2):
-                    z = vgap
+                    z = vgap -20
                     for m in range(0, paper[1]):
                         painter.drawRect(int(n), int(z), int(x), int(y))
                         z += vgap + y
