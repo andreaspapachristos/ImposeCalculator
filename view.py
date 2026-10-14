@@ -72,7 +72,7 @@ class Ui_MainWindow1(object):
         self.MainWindow = MainWindow   
         
         # Δίνουμε έξτρα ύψος στο παράθυρο (+70 pixels) για να χωράει άνετα το κουμπί 
-        MainWindow.resize(size[0], size[1] + 70)
+        MainWindow.resize(size[0], size[1] + 100)
         
         self.page = page
         self.paper = paper
@@ -94,25 +94,25 @@ class Ui_MainWindow1(object):
         painter.setPen(pen)
         painter.drawText(int((MainWindow.geometry().width())/2), 10, str(MainWindow.geometry().width()))
         painter.rotate(270)
-        real_height = MainWindow.geometry().height() - 70
-        painter.drawText(int(-((MainWindow.geometry().height())/2))+20, 10, str(real_height))
+        real_height = MainWindow.geometry().height() -22.5
+        painter.drawText(int(-(real_height/2)+22.5), 10, str(real_height-77.5))
         painter.rotate(-270)
         
         if paper[2] == 0:
             x = page[0]
             y = page[1]
             hgap = (MainWindow.geometry().width() - x * paper[0] * self.spreads(monofyllo)) // ((paper[0] * self.spreads(monofyllo)) + 1)
-            vgap = (MainWindow.geometry().height() - y * paper[1]) // (paper[1] + 2)
+            vgap = (real_height - y * paper[1]) // (paper[1] + 2)
         else:
             x = page[1]
             y = page[0]
             hgap = (MainWindow.geometry().width() - x * paper[0]) // ((paper[0]) + 1)
-            vgap = (MainWindow.geometry().height() - y * paper[1] * self.spreads(monofyllo)) // (paper[1] * self.spreads(monofyllo) + 2)
+            vgap = (real_height  - y * paper[1] * self.spreads(monofyllo)) // (paper[1] * self.spreads(monofyllo) + 2)
 
         n = hgap
         if monofyllo:
             for p in range(0, paper[0]):
-                z = vgap -20
+                z = vgap 
                 for m in range(0, paper[1]):
                     painter.drawRect(int(n), int(z), int(x), int(y))
                     z += vgap + y
