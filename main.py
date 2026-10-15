@@ -199,9 +199,9 @@ class Ui_MainWindow(object):
         self.checkBox_3.setChecked(True)
         self.checkBox_3.setObjectName("checkBox_3")
         self.verticalLayout_3.addWidget(self.checkBox_3)
-        self.checkBox_4 = QtWidgets.QCheckBox(self.groupBox_8)
-        self.checkBox_4.setObjectName("checkBox_4")
-        self.verticalLayout_3.addWidget(self.checkBox_4)
+        #self.checkBox_4 = QtWidgets.QCheckBox(self.groupBox_8)
+        #self.checkBox_4.setObjectName("checkBox_4")
+        #self.verticalLayout_3.addWidget(self.checkBox_4)
         self.groupBox_9 = QtWidgets.QGroupBox(self.tab_2)
         self.groupBox_9.setGeometry(QtCore.QRect(0, 380, 181, 151))
         self.groupBox_9.setTitle("")
@@ -226,8 +226,8 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
         self.checkBox_2.toggled['bool'].connect(self.groupBox_6.setEnabled)
-        self.checkBox_3.clicked.connect(self.checkBox_4.toggle)
-        self.checkBox_4.clicked.connect(self.checkBox_3.toggle)
+        #self.checkBox_3.clicked.connect(self.checkBox_2.toggle)
+        #self.checkBox_4.clicked.connect(self.checkBox_3.toggle)'''
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         self.pushButton.clicked.connect(self.calc)
         self.toolButton.clicked.connect(self.addPaper)
@@ -277,8 +277,8 @@ class Ui_MainWindow(object):
         #self.toolButton_2.setText(_translate("MainWindow", "..."))
         self.toolButton_3.setText(_translate("MainWindow", "rm"))
         self.groupBox_8.setTitle(_translate("MainWindow", "Single Page"))
-        self.checkBox_3.setText(_translate("MainWindow", "Work and Turn"))
-        self.checkBox_4.setText(_translate("MainWindow", "Work and Tumble"))
+        self.checkBox_3.setText(_translate("MainWindow", "Double Sided"))
+        #self.checkBox_4.setText(_translate("MainWindow", "Work and Tumble"))
         self.textBrowser.setHtml(_translate("MainWindow",
                                             "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                             "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
