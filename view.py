@@ -177,30 +177,79 @@ class Ui_MainWindow1(object):
 
             gap = max(rect_width, rect_height) * 0.04
 
-            # Θέσεις των σελίδων στο μοντάζ
+                     # Θέσεις των σελίδων στο μοντάζ
+                      # Θέσεις των σελίδων στο μοντάζ
+                       # Θέσεις των σελίδων στο μοντάζ
             x_positions = []
             y_positions = []
 
-            current_x = 0
+            if double_spread:
 
-            for col in range(total_columns):
-                x_positions.append(current_x)
+                if rotation == 0:
+                    # ==========================
+                    # Spread οριζόντια
+                    # ==========================
 
-                current_x += rect_width + gap
+                    # X: 2 σελίδες χωρίς gap μεταξύ τους,
+                    # gap μετά από κάθε spread.
+                    current_x = 0
 
-                if double_spread and rotation == 0 and (col + 1) % 2 == 0:
-                    current_x += gap
+                    for col in range(total_columns):
+                        x_positions.append(current_x)
 
-            current_y = 0
+                        current_x += rect_width
 
-            for row in range(total_rows):
-                y_positions.append(current_y)
+                        if (col + 1) % 2 == 0:
+                            current_x += gap
 
-                current_y += rect_height + gap
+                    # Y: κάθε σειρά spreads έχει gap
+                    current_y = 0
 
-                if double_spread and rotation != 0 and (row + 1) % 2 == 0:
-                    current_y += gap
+                    for row in range(total_rows):
+                        y_positions.append(current_y)
+                        current_y += rect_height + gap
 
+                else:
+                    # ==========================
+                    # Spread κατακόρυφα
+                    # ==========================
+
+                    # X: κάθε στήλη spreads έχει gap
+                    current_x = 0
+
+                    for col in range(total_columns):
+                        x_positions.append(current_x)
+                        current_x += rect_width + gap
+
+                    # Y: 2 σελίδες χωρίς gap μεταξύ τους,
+                    # gap μετά από κάθε spread.
+                    current_y = 0
+
+                    for row in range(total_rows):
+                        y_positions.append(current_y)
+
+                        current_y += rect_height
+
+                        if (row + 1) % 2 == 0:
+                            current_y += gap
+
+            else:
+                # ==========================
+                # Μονόφυλλο
+                # ==========================
+
+                current_x = 0
+
+                for col in range(total_columns):
+                    x_positions.append(current_x)
+                    current_x += rect_width + gap
+
+                current_y = 0
+
+                for row in range(total_rows):
+                    y_positions.append(current_y)
+                    current_y += rect_height + gap
+            # Πραγματικές διαστάσεις μοντάζ
             scheme_width = x_positions[-1] + rect_width
             scheme_height = y_positions[-1] + rect_height
 
@@ -241,7 +290,7 @@ class Ui_MainWindow1(object):
             painter.setPen(black_pen)
 
             painter.drawRect(
-                QRectF(0, 0, scheme_width, scheme_height)
+                QRectF(-5, -5, scheme_width+10, scheme_height+10)
             )
 
             painter.restore()
