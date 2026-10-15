@@ -336,8 +336,8 @@ class Ui_MainWindow1(object):
             y += int(40 * unit)
 
             draw_info(
-                "Paper size",
-                f"{self.paper[0]} x {self.paper[1]} mm"
+                "Page size",
+                f"{self.page[0]} x {self.page[1]} mm"
             )
             draw_info(
                 "Paper size",
