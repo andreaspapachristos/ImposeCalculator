@@ -363,3 +363,44 @@ def getAllowedSignatureSizes(
         allowed.append(12)
 
     return tuple(sorted(allowed, reverse=True))
+
+def getSignatureYield(candidate, signature_size):
+    """
+    Υπολογίζει πόσα αντίτυπα ενός αναπτύγματος
+    μπορούν να τοποθετηθούν στο συγκεκριμένο μοντάζ.
+
+    Κάθε σαλόνι αντιστοιχεί σε 4 σελίδες
+    του τελικού εντύπου, μαζί με τις δύο όψεις.
+    """
+
+    valid_sizes = (4, 8, 12, 16, 24, 32)
+
+    if signature_size not in valid_sizes:
+        raise ValueError(
+            "Το μέγεθος αναπτύγματος πρέπει να είναι "
+            "4, 8, 12, 16, 24 ή 32 σελίδες."
+        )
+
+    columns, rows, rotation = candidate["grid"]
+
+    # Πόσα σαλόνια χωράει το φύλλο.
+    salons_per_sheet = columns * rows
+
+    # Πόσα σαλόνια χρειάζεται κάθε αντίτυπο.
+    salons_per_copy = signature_size // 4
+
+    # Πόσα ολοκληρωμένα αντίτυπα χωρούν.
+    copies_per_sheet = salons_per_sheet // salons_per_copy
+
+    # Θέσεις σαλονιών που μένουν αχρησιμοποίητες
+    # μετά την τοποθέτηση ολοκληρωμένων αντιτύπων.
+    unused_salons = salons_per_sheet % salons_per_copy
+
+    return {
+        "signature_size": signature_size,
+        "grid": (columns, rows, rotation),
+        "salons_per_sheet": salons_per_sheet,
+        "salons_per_copy": salons_per_copy,
+        "copies_per_sheet": copies_per_sheet,
+        "unused_salons": unused_salons
+    }

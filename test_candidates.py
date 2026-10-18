@@ -1,6 +1,6 @@
 
 
-from diastaseis import getCandidates, betterUse, getSchemeOptions, getAllowedSignatureSizes
+from diastaseis import getCandidates, betterUse, getSchemeOptions, getAllowedSignatureSizes, getSignatureYield
 
 papers = [
     [700, 1000],
@@ -105,3 +105,29 @@ for label, weight, paper_type, manual_limit in test_cases:
     print(f"\n{label}:")
     print("Επιτρεπόμενα μεγέθη:", allowed)
     print("Κατανομές 20 σελίδων:", schemes)
+
+print("\nΈλεγχος παραγωγικής απόδοσης:")
+
+spread_candidates = getCandidates(
+    papers=[[700, 1000]],
+    page=[168, 240],
+    monofyllo=False,
+    bleed=3,
+    gap=8
+)
+
+best_layout = spread_candidates[0]
+
+print("Καλύτερη γεωμετρική διάταξη:", best_layout["grid"])
+
+for signature_size in (16, 8, 4):
+    result = getSignatureYield(
+        best_layout,
+        signature_size
+    )
+
+    print(
+        f'{signature_size}σέλιδο: '
+        f'{result["copies_per_sheet"]} αντίτυπα/φύλλο, '
+        f'{result["salons_per_sheet"]} σαλόνια συνολικά'
+    )
