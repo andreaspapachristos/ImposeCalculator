@@ -175,8 +175,8 @@ def getScheme(pages):
 
     if remainder:
         raise ValueError(
-            f"Σφάλμα: περισσεύουν {remainder} σελίδες "
-            "και δεν μπορούν να βιβλιοδετηθούν."
+            f"Θα χρειαστεί να προσθέσουμε {remainder-4} λευκές σελίδες "
+            "για να μπορούν να βιβλιοδετηθούν."
         )
 
     return sixteen, eight, four

@@ -1,6 +1,6 @@
 
 
-from diastaseis import getCandidates, betterUse, getSchemeOptions, getAllowedSignatureSizes, getSignatureYield
+from diastaseis import getCandidates, betterUse, getScheme, getSchemeOptions, getAllowedSignatureSizes, getSignatureYield, getSchemeOptions
 
 papers = [
     [700, 1000],
@@ -15,6 +15,7 @@ candidates = getCandidates(
     bleed=3,
     gap=8
 )
+getScheme(132)
 
 for i, candidate in enumerate(candidates, start=1):
     print(
