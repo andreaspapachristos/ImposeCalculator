@@ -58,23 +58,23 @@ print("\nΚατανομές για έντυπο 20 σελίδων:")
 
 print("\nΧαρτί που επιτρέπει έως 16σέλιδο:")
 for option in getSchemeOptions(
-    20,
+    21,
     allowed_signature_sizes=(16, 8, 4)
 ):
     print(option["signatures"])
 
 print("\nΧαρτί που επιτρέπει έως 8σέλιδο:")
 for option in getSchemeOptions(
-    20,
+    21,
     allowed_signature_sizes=(8, 4)
 ):
     print(option["signatures"])
 
 print("\nΕιδική περίπτωση με 12σέλιδο:")
 for option in getSchemeOptions(
-    20,
-    allowed_signature_sizes=(16, 8, 4),
-    allow_12=True
+    21,
+    allowed_signature_sizes=(16, 12, 8, 4),
+   # allow_12=True
 ):
     print(option["signatures"])
 
@@ -97,7 +97,7 @@ for label, weight, paper_type, manual_limit in test_cases:
     )
 
     options = getSchemeOptions(
-        pages=20,
+        pages=21,
         allowed_signature_sizes=allowed
     )
 

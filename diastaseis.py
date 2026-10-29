@@ -178,6 +178,7 @@ def getScheme(pages):
             f"Θα χρειαστεί να προσθέσουμε {remainder-4} λευκές σελίδες "
             "για να μπορούν να βιβλιοδετηθούν."
         )
+    pass
 
     return sixteen, eight, four
 
@@ -207,8 +208,8 @@ def preparePageCount(pages):
 
 def getSchemeOptions(
     pages,
-    allowed_signature_sizes=(16, 8, 4),
-    allow_12=False
+    allowed_signature_sizes=(16, 12, 8, 4)
+    #allow_12=False
 ):
     """
     Επιστρέφει όλους τους δυνατούς συνδυασμούς
@@ -230,11 +231,13 @@ def getSchemeOptions(
 
     valid_sizes = {4, 8, 12, 16, 24, 32}
     sizes = set(allowed_signature_sizes)
-
+    '''
     if allow_12:
-        sizes.add(12)
-    else:
-        sizes.discard(12)
+            sizes.add(12)
+        else:
+            sizes.discard(12)
+    
+   
 
     invalid_sizes = sizes - valid_sizes
 
@@ -242,12 +245,12 @@ def getSchemeOptions(
         raise ValueError(
             f"Μη έγκυρα μεγέθη αναπτυγμάτων: {invalid_sizes}"
         )
-
+    
     if 4 not in sizes:
         raise ValueError(
             "Στα επιτρεπόμενα μεγέθη πρέπει να υπάρχει το 4σέλιδο."
         )
-
+    '''
     # Προσθέτουμε λευκές σελίδες μέχρι το σύνολο
     # να γίνει πολλαπλάσιο του 4.
     blank_pages = (-pages) % 4
@@ -302,7 +305,7 @@ def getAllowedSignatureSizes(
     paper_weight,
     paper_type="standard",
     max_signature_size=None,
-    allow_12=False
+    #allow_12=False
 ):
     """
     Επιστρέφει τα επιτρεπόμενα μεγέθη αναπτυγμάτων.
@@ -315,7 +318,7 @@ def getAllowedSignatureSizes(
     αναπτύγματος.
     """
 
-    standard_sizes = (32, 24, 16, 8, 4)
+    standard_sizes = (32, 24, 16, 12, 8, 4)
     valid_sizes = (32, 24, 16, 12, 8, 4)
 
     paper_type = paper_type.strip().lower()
@@ -359,8 +362,8 @@ def getAllowedSignatureSizes(
     ]
 
     # Το 12σέλιδο προστίθεται μόνο κατ' εξαίρεση.
-    if allow_12 and maximum >= 12:
-        allowed.append(12)
+    #if allow_12 and maximum >= 12:
+        #allowed.append(12)
 
     return tuple(sorted(allowed, reverse=True))
 
