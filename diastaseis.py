@@ -166,19 +166,21 @@ def getCandidates(papers, page, monofyllo, bleed, gap):
 def getScheme(pages):
     sixteen = pages // 16
     remainder = pages % 16
+    if remainder :
+        eight = 1
+        remainder = remainder % 8
+    if remainder:
+        four = 1
+    #remainder = remainder % 4
 
-    eight = remainder // 8
-    remainder = remainder % 8
-
-    four = remainder // 4
-    remainder = remainder % 4
-
+    '''   
     if remainder:
         raise ValueError(
             f"Θα χρειαστεί να προσθέσουμε {remainder-4} λευκές σελίδες "
             "για να μπορούν να βιβλιοδετηθούν."
         )
     pass
+    '''
 
     return sixteen, eight, four
 
@@ -383,6 +385,7 @@ def getSignatureYield(candidate, signature_size):
             "Το μέγεθος αναπτύγματος πρέπει να είναι "
             "4, 8, 12, 16, 24 ή 32 σελίδες."
         )
+    pass
 
     columns, rows, rotation = candidate["grid"]
 

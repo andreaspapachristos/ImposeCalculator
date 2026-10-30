@@ -59,7 +59,7 @@ print("\nΚατανομές για έντυπο 20 σελίδων:")
 print("\nΧαρτί που επιτρέπει έως 16σέλιδο:")
 for option in getSchemeOptions(
     21,
-    allowed_signature_sizes=(16, 8, 4)
+    allowed_signature_sizes=(16, 12, 8, 4)
 ):
     print(option["signatures"])
 
