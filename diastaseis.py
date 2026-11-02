@@ -164,6 +164,11 @@ def getCandidates(papers, page, monofyllo, bleed, gap):
     return candidates
 
 def getScheme(pages):
+    '''
+    αφόυ μπορεί να έχει μόνο από ένα τετρασέλιδο ή οκτασέλδιο ή και από τα δύο
+    '''
+    blank_pages = (-pages) % 4
+   # total_pages = pages + blank_pages
     sixteen = pages // 16
     remainder = pages % 16
     if remainder :
@@ -187,30 +192,34 @@ def getScheme(pages):
 
 def preparePageCount(pages):
     """
-    Προσθέτει νοητά λευκές σελίδες στο τέλος,
+    Προσθέτει λευκές σελίδες στο τέλος,
     ώστε το σύνολο να είναι πολλαπλάσιο του 4.
-    Δεν αλλάζει το αρχικό αρχείο ή το περιεχόμενο.
+    αλλάζει το αρχικό αρχείo δεν μπορεί να υπολογιστεί αλλιώς.
     """
 
     if not isinstance(pages, int) or isinstance(pages, bool) or pages <= 0:
         raise ValueError("Ο αριθμός σελίδων πρέπει να είναι θετικός ακέραιος.")
 
     # Πόσες λευκές σελίδες χρειάζονται;
-    blank_pages = (-pages) % 4
-
+    #blank_pages = (-pages) % 4
+    if pages % 4 :
+        print(
+            f"Προσθέτουμε {4 - (pages % 4)} λευκές σελίδες "
+            "για να γίνει το σύνολο πολλαπλάσιο του 4."
+        )
     # Συνολικός αριθμός μετά την προσθήκη λευκών.
-    padded_pages = pages + blank_pages
+        pages = pages +(4 - (pages % 4))
 
     return {
         "requested_pages": pages,
-        "blank_pages": blank_pages,
-        "padded_pages": padded_pages
+        "blank_pages": (4 - (pages % 4)),
+       
     }
 
 
 def getSchemeOptions(
     pages,
-    allowed_signature_sizes=(16, 12, 8, 4)
+    allowed_signature_sizes=(64, 32, 16, 12, 8, 4)
     #allow_12=False
 ):
     """
@@ -231,7 +240,7 @@ def getSchemeOptions(
             "Ο αριθμός σελίδων πρέπει να είναι θετικός ακέραιος."
         )
 
-    valid_sizes = {4, 8, 12, 16, 24, 32}
+   # valid_sizes = {4, 8, 12, 16, 24, 32}
     sizes = set(allowed_signature_sizes)
     '''
     if allow_12:
@@ -255,8 +264,8 @@ def getSchemeOptions(
     '''
     # Προσθέτουμε λευκές σελίδες μέχρι το σύνολο
     # να γίνει πολλαπλάσιο του 4.
-    blank_pages = (-pages) % 4
-    total_pages = pages + blank_pages
+    #blank_pages = (-pages) % 4
+    #total_pages = pages + blank_pages
 
     # Εξετάζουμε πρώτα τα μεγαλύτερα αναπτύγματα.
     sizes = sorted(sizes, reverse=True)
@@ -287,7 +296,7 @@ def getSchemeOptions(
 
             current.pop()
 
-    find_schemes(total_pages, 0, [])
+    find_schemes(pages, 0, [])
 
     # Κρατάμε μία εγγραφή ανά διαφορετικό συνδυασμό.
     options = []
@@ -295,8 +304,8 @@ def getSchemeOptions(
     for scheme in schemes:
         options.append({
             "requested_pages": pages,
-            "blank_pages": blank_pages,
-            "total_pages": total_pages,
+            #"blank_pages": blank_pages,
+            "total_pages": pages,
             "preferred_signature_size": scheme[0],
             "signatures": list(scheme)
         })
