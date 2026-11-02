@@ -165,7 +165,7 @@ def getCandidates(papers, page, monofyllo, bleed, gap):
 
 def getScheme(pages):
     '''
-    αφόυ μπορεί να έχει μόνο από ένα τετρασέλιδο ή οκτασέλδιο ή και από τα δύο
+    αφόυ μπορεί να έχει μόνο από ένα τετρασέλιδο ή οκτασέλδιο ή και από τα δύο αλλά μόνο μια φορά το καθένα.
     '''
     blank_pages = (-pages) % 4
    # total_pages = pages + blank_pages
@@ -311,6 +311,9 @@ def getSchemeOptions(
         })
 
     return options
+'''
+είναι περιττά όλα αυτά.
+
 
 def getAllowedSignatureSizes(
     paper_weight,
@@ -419,3 +422,6 @@ def getSignatureYield(candidate, signature_size):
         "copies_per_sheet": copies_per_sheet,
         "unused_salons": unused_salons
     }
+
+
+'''
