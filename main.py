@@ -399,6 +399,9 @@ class Ui_MainWindow(object):
 
 if __name__ == "__main__":
 
+    logger.info("Application started")
+    logger.debug
+
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()

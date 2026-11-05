@@ -14,6 +14,8 @@ Copyright 2021 Andreas Papachristos
    See the License for the specific language governing permissions and
    limitations under the License.
 '''''
+from main import logger
+
 
 def find4up(diaireteos, dieretis):
     an = (12, 9, 8, 6, 4, 3, 2)
@@ -38,20 +40,26 @@ def matchMontaz(**kwargs):
     if kwargs.get('paperHeight') < kwargs.get('paperWidth'):
 
         pph = kwargs.get('paperHeight') - gap
+        logger.debug(f"Paper height is less than paper width. pph set to {pph}")
         #else: pph = kwargs.get('paperHeight') - 10
     else:
         pph = kwargs.get('paperWidth') - gap #kwargs.get('gap')
+        logger.debug(f"Paper height is greater than or equal to paper width. pph set to {pph}")
 
     temp = []
     if kwargs.get('monofyllo', True):
         pw = kwargs.get('pagewidth') + bleed//2 #kwargs.get('bleed') * 2
         if (kwargs.get('paperHeight') < kwargs.get('paperWidth')):
             ppw = kwargs.get('paperWidth')
+            logger.debug(f"Paper height is less than paper width. ppw set to {ppw}")
         else:
             ppw = kwargs.get('paperHeight')
+            logger.debug(f"Paper height is greater than or equal to paper width. ppw set to {ppw}") 
         #ppw = kwargs.get('paperWidth')
         temp.append([ppw // pw, pph // ph, 0])
+        logger.debug(f"Monofyllo is True. Appending [{ppw // pw}, {pph // ph}, 0] to temp")
         temp.append([ppw // ph, pph // pw, 1])
+        logger.debug(f"Appending [{ppw // ph}, {pph // pw}, 1] to temp")
         #print(temp)
         return (temp)
     else:
